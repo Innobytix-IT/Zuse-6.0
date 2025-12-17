@@ -13,7 +13,9 @@ Willkommen bei Zuse! Zuse ist eine moderne, mehrsprachige Programmiersprache (De
 *   **Objektorientierung:** Klassen, Vererbung und Instanzen (`KLASSE`, `MEIN`).
 *   **IDE inklusive:** Das "Zuse Studio" bietet Syntax-Highlighting und direktes Ausführen.
 *   **Mehrsprachig:** Code kann on-the-fly zwischen Deutsch, Englisch und Spanisch übersetzt werden.
-
+*   Weitere Sprachen sollen folgen.
+*   Dieses Projekt ist Open-Surce und freut sich über jede Form der Unterstützung ! ;) 
 ---
 
-Zuse kommt mit einer MIT Lizenz 
+
+Zuse 6.0 kommt mit einer MIT Lizenz 
