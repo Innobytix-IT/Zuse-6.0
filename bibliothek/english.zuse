@@ -1,0 +1,14 @@
+IMPORT tkinter AS _tk
+IMPORT zufall AS _rnd
+
+CLASS Window:
+    DEFINE NEW(title, width, height):
+        SELF.obj = _tk.Tk()
+        SELF.obj.title(title)
+        SELF.obj.geometry(str(width) + "x" + str(height))
+    END FUNCTION
+
+    DEFINE run():
+        SELF.obj.mainloop()
+    END FUNCTION
+END CLASS

@@ -1,0 +1,469 @@
+
+📘 Das Große Zuse-Handbuch (Version 6.0 Final)
+Willkommen bei Zuse!
+Zuse ist eine moderne, Mehrsprachige Programmiersprache, die auf der Macht von Python aufbaut. Sie ermöglicht alles – von einfachen Rechnungen bis hin zu komplexen grafischen Benutzeroberflächen.
+-----------------------------------------------------------------------
+1. 📢 Ein- und Ausgabe
+Wie man mit dem Computer spricht.
+Befehl	Erklärung	Beispiel
+AUSGABE	Schreibt Text oder Zahlen in die Konsole.	AUSGABE "Hallo Welt"
+EINGABE_TEXT	Fragt den Benutzer nach einem Text.	name = EINGABE_TEXT("Wie heißt du?")
+EINGABE_ZAHL	Fragt nach einer Zahl (rechnet Komma automatisch um).	alter = EINGABE_ZAHL("Wie alt bist du?")
+------------------------------------------------------------------------
+2. 🔀 Entscheidungen (Logik)
+Der Computer trifft Entscheidungen.
+Neu: Kurze Abfragen können jetzt in einer Zeile stehen!
+Befehl	Erklärung	Beispiel
+WENN	Startet eine Bedingung.	WENN alter > 18 DANN ...
+DANN	Muss nach der Bedingung stehen.	... DANN AUSGABE "Erwachsen"
+SONST	(Optional) Wenn die WENN-Frage nicht stimmte.	SONST AUSGABE "Kind"
+ENDE WENN	Beendet den Block (Wichtig!).	ENDE WENN
+
+-----------------------------------------------------------------------
+Beispiel (Einzeiler):
+
+WENN leben == 0 DANN spiel_beenden() ENDE WENN
+3. 🔄 Schleifen (Wiederholungen)
+Dinge mehrmals tun. Das Wort SCHLEIFE am Anfang ist optional.
+Befehl	Erklärung	Beispiel
+FÜR ... IN	Geht durch eine Liste Element für Element durch.	FÜR zahl IN [1,2,3] MACHE ...
+SOLANGE	Wiederholt, solange die Bedingung wahr ist.	SOLANGE x < 10 MACHE ...
+MACHE	Startet den Block der Schleife.	... MACHE AUSGABE x
+ENDE SCHLEIFE	Beendet den Schleifen-Block.	ENDE SCHLEIFE
+
+-----------------------------------------------------------------------
+4. 📦 Funktionen & Aktionen
+Code wiederverwenden und auf Knopfdruck ausführen.
+Befehl	Erklärung	Beispiel
+DEFINIERE	Erstellt einen neuen Befehl.	DEFINIERE hallo(name):
+ERGEBNIS IST	Gibt einen Wert zurück (Return).	ERGEBNIS IST x + y
+ENDE FUNKTION	Zeigt an, dass die Funktion zu Ende ist.	ENDE FUNKTION
+AKTION	Erstellt eine Mini-Funktion (wichtig für Buttons!).	command=AKTION(): speichern()
+
+-----------------------------------------------------------------------
+5. 🏗️ Klassen & Objekte (Baupläne)
+Hier wird es professionell.
+Befehl	Erklärung	Beispiel
+KLASSE	Definiert einen Bauplan.	KLASSE Auto:
+ENDE KLASSE	Beendet den Bauplan.	ENDE KLASSE
+MEIN	Bezieht sich auf das eigene Objekt ("Mein Fenster").	MEIN.farbe = "Rot"
+ERSTELLE	Der Konstruktor (Start-Funktion).	DEFINIERE ERSTELLE():
+ELTERN	Ruft Methoden der Elternklasse auf.	ELTERN.starten()
+
+-----------------------------------------------------------------------
+6. 🌐 Importe (God Mode)
+Nutze die volle Power von Python-Bibliotheken.
+Befehl	Erklärung	Beispiel
+BENUTZE ... ALS	Lädt eine Bibliothek (Python oder Zuse).	BENUTZE customtkinter ALS ctk
+GLOBAL	Macht eine Variable überall verfügbar.	GLOBAL punktestand
+Hinweis: Du kannst jetzt requests, pandas, math, time und vieles mehr nutzen!
+
+-----------------------------------------------------------------------
+7. 🛡️ Fehler abfangen
+Damit das Programm nicht abstürzt, wenn mal das Internet weg ist.
+Befehl	Erklärung	Beispiel
+VERSUCHE	Probiert Code aus, der schiefgehen könnte.	VERSUCHE download()
+FANGE	Wird ausgeführt, wenn ein Fehler passiert.	FANGE AUSGABE "Kein Internet"
+ENDE VERSUCHE	Beendet den Block.	ENDE VERSUCHE
+
+-----------------------------------------------------------------------
+8. 🧰 Werkzeugkasten (Standard-Funktionen)
+Diese Befehle sind immer da.
+Funktion	Beschreibung
+str(x)	Macht aus einer Zahl Text.
+int(x)	Macht aus Text eine ganze Zahl (ohne Komma).
+float(x)	Macht aus Text eine Kommazahl.
+len(x)	Zählt Elemente in einer Liste oder Buchstaben im Text.
+typ(x)	Zeigt den Datentyp an.
+liste()	Erstellt eine leere Liste.
+dict()	Erstellt ein leeres Wörterbuch (Dictionary).
+eval(x)	Rechnet Text als Formel aus (z.B. für Taschenrechner).
+
+-----------------------------------------------------------------------
+9. 🧮 Zeichen & Operatoren
+Zeichen	Bedeutung
++ - * /	Rechnen (Punkt-vor-Strich gilt!)
+==	Ist gleich? (Vergleich)
+!=	Ist ungleich?
+=	Zuweisung (Speichern in Variable)
+.	Punkt (Zugriff: MEIN.fenster)
+[ ]	Listen-Zugriff (liste[0])
+🎉 Viel Spaß beim Programmieren mit Zuse!
+"Wer die Sprache beherrscht, beherrscht die Maschine."
+-----------------------------------------------------------------------
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------
+1. 🧮 Der Taschenrechner (Update)
+
+
+# ZUSE TASCHENRECHNER (Version 6.0)
+BENUTZE tkinter ALS tk
+
+# Fenster
+fenster = tk.Tk()
+fenster.title("Zuse Rechner")
+fenster.geometry("300x400")
+
+# Raster (Grid) konfigurieren
+fenster.grid_columnconfigure(0, weight=1)
+fenster.grid_columnconfigure(1, weight=1)
+fenster.grid_columnconfigure(2, weight=1)
+fenster.grid_columnconfigure(3, weight=1)
+fenster.grid_rowconfigure(1, weight=1)
+fenster.grid_rowconfigure(2, weight=1)
+fenster.grid_rowconfigure(3, weight=1)
+fenster.grid_rowconfigure(4, weight=1)
+
+# Display (Schriftart als String, da keine Tupel erlaubt sind)
+display = tk.Entry(fenster, font="Arial 20")
+display.grid(row=0, column=0, columnspan=4, sticky="nsew", ipadx=8, ipady=8)
+
+# --- FUNKTIONEN ---
+DEFINIERE add(z):
+    alt = display.get()
+    display.delete(0, tk.END)
+    display.insert(0, alt + str(z))
+ENDE FUNKTION
+
+DEFINIERE calc():
+    VERSUCHE
+        res = str(eval(display.get()))
+        display.delete(0, tk.END)
+        display.insert(0, res)
+    FANGE
+        display.delete(0, tk.END)
+        display.insert(0, "Fehler")
+    ENDE VERSUCHE
+ENDE FUNKTION
+
+DEFINIERE clear():
+    display.delete(0, tk.END)
+ENDE FUNKTION
+
+# --- BUTTONS ---
+# Nutzung von AKTION (statt LAMBDA) und Strings für Fonts
+
+# Zeile 1
+b7 = tk.Button(fenster, text="7", font="Arial 14", command=AKTION(): add(7))
+b7.grid(row=1, column=0, sticky="nsew")
+
+b8 = tk.Button(fenster, text="8", font="Arial 14", command=AKTION(): add(8))
+b8.grid(row=1, column=1, sticky="nsew")
+
+b9 = tk.Button(fenster, text="9", font="Arial 14", command=AKTION(): add(9))
+b9.grid(row=1, column=2, sticky="nsew")
+
+b_div = tk.Button(fenster, text="/", font="Arial 14", command=AKTION(): add("/"))
+b_div.grid(row=1, column=3, sticky="nsew")
+
+# Zeile 2
+b4 = tk.Button(fenster, text="4", font="Arial 14", command=AKTION(): add(4))
+b4.grid(row=2, column=0, sticky="nsew")
+
+b5 = tk.Button(fenster, text="5", font="Arial 14", command=AKTION(): add(5))
+b5.grid(row=2, column=1, sticky="nsew")
+
+b6 = tk.Button(fenster, text="6", font="Arial 14", command=AKTION(): add(6))
+b6.grid(row=2, column=2, sticky="nsew")
+
+b_mul = tk.Button(fenster, text="*", font="Arial 14", command=AKTION(): add("*"))
+b_mul.grid(row=2, column=3, sticky="nsew")
+
+# Zeile 3
+b1 = tk.Button(fenster, text="1", font="Arial 14", command=AKTION(): add(1))
+b1.grid(row=3, column=0, sticky="nsew")
+
+b2 = tk.Button(fenster, text="2", font="Arial 14", command=AKTION(): add(2))
+b2.grid(row=3, column=1, sticky="nsew")
+
+b3 = tk.Button(fenster, text="3", font="Arial 14", command=AKTION(): add(3))
+b3.grid(row=3, column=2, sticky="nsew")
+
+b_sub = tk.Button(fenster, text="-", font="Arial 14", command=AKTION(): add("-"))
+b_sub.grid(row=3, column=3, sticky="nsew")
+
+# Zeile 4
+b_clr = tk.Button(fenster, text="C", font="Arial 14", bg="#ffcccc", command=AKTION(): clear())
+b_clr.grid(row=4, column=0, sticky="nsew")
+
+b0 = tk.Button(fenster, text="0", font="Arial 14", command=AKTION(): add(0))
+b0.grid(row=4, column=1, sticky="nsew")
+
+b_eq = tk.Button(fenster, text="=", font="Arial 14", bg="#ccffcc", command=AKTION(): calc())
+b_eq.grid(row=4, column=2, sticky="nsew")
+
+b_add = tk.Button(fenster, text="+", font="Arial 14", command=AKTION(): add("+"))
+b_add.grid(row=4, column=3, sticky="nsew")
+
+fenster.mainloop()
+
+
+-----------------------------------------------------------------------
+
+
+
+2. 🐍 Das Snake Spiel 
+
+
+# ZUSE SNAKE (Version 6.0)
+BENUTZE tkinter ALS tk
+BENUTZE zufall ALS random
+
+# Konfiguration
+BLOCK = 20
+BREITE = 400
+HOEHE = 400
+GRID_W = 20
+GRID_H = 20
+
+KLASSE SnakeSpiel:
+    DEFINIERE ERSTELLE():
+        # MEIN statt SELBST
+        MEIN.fenster = tk.Tk()
+        MEIN.fenster.title("Zuse Snake")
+        MEIN.fenster.geometry(str(BREITE) + "x" + str(HOEHE))
+        MEIN.fenster.resizable(falsch, falsch)
+
+        MEIN.canvas = tk.Canvas(MEIN.fenster, width=BREITE, height=HOEHE, bg="black")
+        MEIN.canvas.pack()
+
+        MEIN.start_spiel()
+
+        # Tasten binden (Interpreter v5.0 erlaubt Methodenübergabe)
+        MEIN.fenster.bind("<Left>", MEIN.links)
+        MEIN.fenster.bind("<Right>", MEIN.rechts)
+        MEIN.fenster.bind("<Up>", MEIN.hoch)
+        MEIN.fenster.bind("<Down>", MEIN.runter)
+        MEIN.fenster.bind("<space>", MEIN.neustart_check)
+
+        MEIN.loop()
+        MEIN.fenster.mainloop()
+    ENDE FUNKTION
+
+    DEFINIERE start_spiel():
+        MEIN.laeuft = wahr
+        MEIN.punkte = 0
+        MEIN.dx = 1
+        MEIN.dy = 0
+        MEIN.schlange = [[5, 10], [4, 10], [3, 10]]
+        MEIN.neues_futter()
+        MEIN.fenster.title("Punkte: 0")
+    ENDE FUNKTION
+
+    DEFINIERE neustart_check(event):
+        # Einzeiler-WENN (Parser v4.8+)
+        WENN MEIN.laeuft == falsch DANN MEIN.start_spiel() ENDE WENN
+    ENDE FUNKTION
+
+    # --- STEUERUNG ---
+    DEFINIERE links(event):
+        WENN MEIN.dx != 1 DANN MEIN.dx = -1 MEIN.dy = 0 ENDE WENN
+    ENDE FUNKTION
+
+    DEFINIERE rechts(event):
+        WENN MEIN.dx != -1 DANN MEIN.dx = 1 MEIN.dy = 0 ENDE WENN
+    ENDE FUNKTION
+
+    DEFINIERE hoch(event):
+        WENN MEIN.dy != 1 DANN MEIN.dx = 0 MEIN.dy = -1 ENDE WENN
+    ENDE FUNKTION
+
+    DEFINIERE runter(event):
+        WENN MEIN.dy != -1 DANN MEIN.dx = 0 MEIN.dy = 1 ENDE WENN
+    ENDE FUNKTION
+
+    # --- LOGIK ---
+    DEFINIERE neues_futter():
+        fx = random.randint(0, GRID_W - 1)
+        fy = random.randint(0, GRID_H - 1)
+        MEIN.futter = [fx, fy]
+    ENDE FUNKTION
+
+    DEFINIERE loop():
+        WENN MEIN.laeuft DANN
+            MEIN.bewegen()
+            MEIN.zeichnen()
+        ENDE WENN
+        MEIN.fenster.after(150, MEIN.loop)
+    ENDE FUNKTION
+
+    DEFINIERE bewegen():
+        kopf = MEIN.schlange[0]
+        neuer_x = kopf[0] + MEIN.dx
+        neuer_y = kopf[1] + MEIN.dy
+
+        # Einzeiler machen den Code lesbar:
+        WENN neuer_x < 0 DANN MEIN.game_over() ENDE WENN
+        WENN neuer_x >= GRID_W DANN MEIN.game_over() ENDE WENN
+        WENN neuer_y < 0 DANN MEIN.game_over() ENDE WENN
+        WENN neuer_y >= GRID_H DANN MEIN.game_over() ENDE WENN
+
+        # Schleife ohne 'SCHLEIFE' Wort (Parser v4.9)
+        FÜR teil IN MEIN.schlange MACHE
+            WENN teil[0] == neuer_x DANN
+                WENN teil[1] == neuer_y DANN MEIN.game_over() ENDE WENN
+            ENDE WENN
+        ENDE SCHLEIFE
+
+        WENN MEIN.laeuft DANN
+            neuer_kopf = [neuer_x, neuer_y]
+            MEIN.schlange.insert(0, neuer_kopf)
+
+            WENN neuer_x == MEIN.futter[0] DANN
+                WENN neuer_y == MEIN.futter[1] DANN
+                    MEIN.punkte = MEIN.punkte + 1
+                    MEIN.fenster.title("Punkte: " + str(MEIN.punkte))
+                    MEIN.neues_futter()
+                SONST
+                    MEIN.schlange.pop()
+                ENDE WENN
+            SONST
+                MEIN.schlange.pop()
+            ENDE WENN
+        ENDE WENN
+    ENDE FUNKTION
+
+    DEFINIERE game_over():
+        MEIN.laeuft = falsch
+        # Schriftart als String
+        MEIN.canvas.create_text(BREITE/2, HOEHE/2, text="GAME OVER", fill="white", font="Arial 24 bold")
+        MEIN.canvas.create_text(BREITE/2, HOEHE/2 + 30, text="Druecke LEERTASTE", fill="yellow", font="Arial 10")
+    ENDE FUNKTION
+
+    DEFINIERE zeichnen():
+        MEIN.canvas.delete("all")
+        
+        fx = MEIN.futter[0] * BLOCK
+        fy = MEIN.futter[1] * BLOCK
+        MEIN.canvas.create_oval(fx, fy, fx+BLOCK, fy+BLOCK, fill="red")
+
+        FÜR teil IN MEIN.schlange MACHE
+            x = teil[0] * BLOCK
+            y = teil[1] * BLOCK
+            MEIN.canvas.create_rectangle(x, y, x+BLOCK, y+BLOCK, fill="lime")
+        ENDE SCHLEIFE
+    ENDE FUNKTION
+
+ENDE KLASSE
+
+app = SnakeSpiel.ERSTELLE()
+
+
+
+-----------------------------------------------------------------------
+#So muss deine Ordnerstruktur aussehen damit du loslegen kannst. 
+
+
+/DeinProjektOrdner
+    │   zuse_studio.py  <-- Dein Code von oben
+    │   main.py         <-- Die "Smart Loader" Version für die Konsole
+    │   interpreter.py  <-- Version 6.0 (God Mode)
+    │   parser.py       <-- Version 4.9 (Smart Loops)
+    │   lexer.py
+    │   language_loader.py
+    │   translate.py
+    │
+    ├───sprachen
+    │       deutsch.json
+    │       english.json
+    │       espaniol.json
+    │  
+    └───bibliothek     
+            deutsch.zuse
+            english.zuse
+            espaniol.zuse
+
+
+3. 🚀 Die Power Test - Suite
+
+# ZUSE POWER SUITE (Version 6.0 Final)
+# Voraussetzungen: pip install customtkinter requests
+
+BENUTZE customtkinter ALS ctk
+BENUTZE platform
+BENUTZE requests
+BENUTZE json
+
+# Aussehen festlegen
+ctk.set_appearance_mode("Dark")
+ctk.set_default_color_theme("blue")
+
+KLASSE PowerApp:
+    DEFINIERE ERSTELLE():
+        MEIN.fenster = ctk.CTk()
+        MEIN.fenster.title("Zuse Power Suite")
+        MEIN.fenster.geometry("600x500")
+
+        # --- HEADER ---
+        # Schriftart sauber als Objekt statt Tupel
+        schrift_titel = ctk.CTkFont(family="Roboto Medium", size=24)
+        
+        MEIN.lbl_titel = ctk.CTkLabel(MEIN.fenster, text="Zuse Power Suite", font=schrift_titel)
+        MEIN.lbl_titel.pack(pady=20)
+
+        # --- SYSTEM INFO ---
+        MEIN.frame_sys = ctk.CTkFrame(MEIN.fenster)
+        MEIN.frame_sys.pack(pady=10, padx=20, fill="x")
+        
+        schrift_kopf = ctk.CTkFont(family="Roboto", size=16)
+        
+        MEIN.lbl_sys_head = ctk.CTkLabel(MEIN.frame_sys, text="System Informationen", font=schrift_kopf)
+        MEIN.lbl_sys_head.pack(pady=5)
+        
+        sys_info = "OS: " + platform.system() + " " + platform.release()
+        sys_arch = "Architektur: " + platform.machine()
+        py_ver = "Python Version: " + platform.python_version()
+
+        ctk.CTkLabel(MEIN.frame_sys, text=sys_info).pack()
+        ctk.CTkLabel(MEIN.frame_sys, text=sys_arch).pack()
+        ctk.CTkLabel(MEIN.frame_sys, text=py_ver).pack(pady=10)
+
+        # --- NETZWERK ---
+        MEIN.frame_net = ctk.CTkFrame(MEIN.fenster)
+        MEIN.frame_net.pack(pady=10, padx=20, fill="x")
+
+        MEIN.lbl_net = ctk.CTkLabel(MEIN.frame_net, text="Netzwerk Check", font=schrift_kopf)
+        MEIN.lbl_net.pack(pady=5)
+
+        # Hier wird MEIN.hole_ip als Callback übergeben
+        MEIN.btn_ip = ctk.CTkButton(MEIN.frame_net, text="Meine IP abrufen", command=MEIN.hole_ip)
+        MEIN.btn_ip.pack(pady=10)
+        
+        MEIN.lbl_result = ctk.CTkLabel(MEIN.frame_net, text="Klicke den Button...", text_color="gray")
+        MEIN.lbl_result.pack(pady=10)
+
+        MEIN.fenster.mainloop()
+    ENDE FUNKTION
+
+    DEFINIERE hole_ip():
+        MEIN.lbl_result.configure(text="Lade Daten...", text_color="yellow")
+        MEIN.fenster.after(100, MEIN.fuehre_request_aus)
+    ENDE FUNKTION
+
+    DEFINIERE fuehre_request_aus():
+        VERSUCHE
+            antwort = requests.get("https://api.ipify.org?format=json")
+            
+            WENN antwort.status_code == 200 DANN
+                daten_text = antwort.text
+                daten = json.loads(daten_text)
+                ip = daten["ip"]
+                MEIN.lbl_result.configure(text="Deine IP: " + ip, text_color="#00ff00")
+            SONST
+                MEIN.lbl_result.configure(text="Fehler API", text_color="red")
+            ENDE WENN
+        FANGE
+            MEIN.lbl_result.configure(text="Netzwerkfehler (Offline?)", text_color="red")
+        ENDE VERSUCHE
+    ENDE FUNKTION
+
+ENDE KLASSE
+
+app = PowerApp.ERSTELLE()

@@ -1,0 +1,14 @@
+BENUTZE tkinter ALS _tk
+BENUTZE zufall ALS _rnd
+
+KLASSE Fenster:
+    DEFINIERE ERSTELLE(titel, breite, hoehe):
+        MEIN.obj = _tk.Tk()
+        MEIN.obj.title(titel)
+        MEIN.obj.geometry(str(breite) + "x" + str(hoehe))
+    ENDE FUNKTION
+    
+    DEFINIERE starte():
+        MEIN.obj.mainloop()
+    ENDE FUNKTION
+ENDE KLASSE
