@@ -4,10 +4,14 @@ Die Multilinguale Programmiersprache, die auf der Macht von Python aufbaut.
 
 ## 📺 Demos
 ### Multilingual programming language Zuse
-<video src="Multilingual programming language Zuse.mp4" width="100%" controls></video>
+
+https://github.com/user-attachments/assets/03e8e32d-35db-4854-aa98-44cb26ff9e0f
+
 
 ### Multilingual programming language Zuse DEMO 2
-<video src="Multilingual programming language Zuse DEMO 2.mp4" width="100%" controls></video>
+
+https://github.com/user-attachments/assets/4e110498-f6c1-4df8-a8d2-e0db3fb881e9
+
 
 ---
 
@@ -42,5 +46,6 @@ Welcome to Zuse! Zuse is a modern, multilingual programming language (German, En
 **Contribute**
 This project is open-source, and we welcome any form of support! ;)
 Zuse v6.5 is released under the MIT License (see License file).
+
 
 
