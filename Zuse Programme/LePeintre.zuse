@@ -1,0 +1,52 @@
+# EXAMEN D'ART ZUSE (FRANCAIS)
+# Nous dessinons une maison avec un soleil!
+
+IMPRIMER "Le peintre se prepare..."
+
+# En mode apprentissage, la classe 'Peintre' est disponible.
+pierre = Peintre()
+
+# 1. La Maison (Carre)
+pierre.couleur("bleu")
+pierre.epaisseur(5)
+
+IMPRIMER "Je peins la maison..."
+BOUCLE POUR i DANS [1, 2, 3, 4] FAIRE
+    pierre.avancer(150)
+    pierre.tourner_droite(90)
+FIN BOUCLE
+
+# 2. Le Toit (Triangle)
+pierre.couleur("rouge")
+IMPRIMER "Je couvre le toit..."
+
+pierre.tourner_gauche(45)
+pierre.avancer(106) 
+pierre.tourner_droite(90)
+pierre.avancer(106)
+
+# Corriger la position
+pierre.tourner_droite(45)
+pierre.tourner_droite(90)
+pierre.avancer(150)
+pierre.tourner_droite(180) 
+
+# 3. Le Soleil (Cercle)
+IMPRIMIR "Maintenant le soleil!"
+
+pierre.lever_crayon()
+pierre.avancer(200) 
+pierre.tourner_gauche(90)
+pierre.avancer(100) 
+pierre.poser_crayon()
+
+pierre.couleur("jaune")
+pierre.epaisseur(10)
+pierre.cercle(40)
+
+# Signature
+pierre.lever_crayon()
+pierre.avancer(100)
+IMPRIMER "Fini! (Fermez la fenetre pour quitter)"
+
+pierre.fini()

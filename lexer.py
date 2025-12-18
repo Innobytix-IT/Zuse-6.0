@@ -1,4 +1,4 @@
-# FILE: lexer.py (Version ZUSE 4.2 FIXED)
+# FILE: lexer.py (Version ZUSE 6.1 OFFSET FIX)
 import re
 
 STATIC_TOKENS = [
@@ -39,9 +39,9 @@ class Lexer:
         regex_parts = [f'(?P<{name}>{pattern})' for name, pattern in alle_regeln]
         return re.compile('|'.join(regex_parts))
 
-    def tokenize(self, code):
+    def tokenize(self, code, start_line=1): # <--- WICHTIG: Hier muss start_line stehen
         tokens = []
-        line_num = 1
+        line_num = start_line 
         
         for mo in self.token_regex.finditer(code):
             kind = mo.lastgroup
@@ -75,5 +75,6 @@ class Lexer:
         tokens.append({'type': 'EOF', 'line': line_num, 'value': '', 'start': len(code), 'end': len(code)})
         return tokens
 
-def tokenize(code, config):
-    return Lexer(config).tokenize(code)
+# WICHTIG: Auch die Wrapper-Funktion muss das neue Argument annehmen
+def tokenize(code, config, start_line=1):
+    return Lexer(config).tokenize(code, start_line)

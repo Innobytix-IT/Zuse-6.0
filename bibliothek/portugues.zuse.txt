@@ -1,0 +1,90 @@
+# ZUSE BIBLIOTECA PADRAO (PORTUGUES)
+
+USAR tkinter COMO _tk
+USAR turtle COMO _turtle
+USAR random COMO _rnd
+USAR time COMO _zeit
+
+CLASSE Janela:
+    DEFINIR CRIAR(titulo, largura, altura):
+        MEU.obj = _tk.Tk()
+        MEU.obj.title(titulo)
+        MEU.obj.geometry(str(largura) + "x" + str(altura))
+    FIM FUNCAO
+
+    DEFINIR iniciar():
+        MEU.obj.mainloop()
+    FIM FUNCAO
+FIM CLASSE
+
+CLASSE Pintor:
+    DEFINIR CRIAR():
+        MEU.t = _turtle.Turtle()
+        MEU.t.shape("turtle")
+        MEU.t.speed(3)
+        MEU.screen = _turtle.Screen()
+        MEU.screen.title("Escola de Arte Zuse")
+    FIM FUNCAO
+
+    DEFINIR mover(passos):
+        MEU.t.forward(passos)
+    FIM FUNCAO
+
+    DEFINIR voltar(passos):
+        MEU.t.backward(passos)
+    FIM FUNCAO
+
+    DEFINIR virar_esquerda(graus):
+        MEU.t.left(graus)
+    FIM FUNCAO
+
+    DEFINIR virar_direita(graus):
+        MEU.t.right(graus)
+    FIM FUNCAO
+
+    DEFINIR caneta_sobe():
+        MEU.t.penup()
+    FIM FUNCAO
+
+    DEFINIR caneta_desce():
+        MEU.t.pendown()
+    FIM FUNCAO
+
+    DEFINIR cor(c):
+        SE c == "vermelho" ENTAO
+            MEU.t.color("red")
+        SENAO SE c == "azul" ENTAO
+            MEU.t.color("blue")
+        SENAO SE c == "verde" ENTAO
+            MEU.t.color("green")
+        SENAO SE c == "amarelo" ENTAO
+            MEU.t.color("yellow")
+        SENAO SE c == "preto" ENTAO
+            MEU.t.color("black")
+        SENAO SE c == "branco" ENTAO
+            MEU.t.color("white")
+        SENAO
+            MEU.t.color(c)
+        FIM SE
+    FIM FUNCAO
+    
+    DEFINIR espessura(e):
+        MEU.t.pensize(e)
+    FIM FUNCAO
+
+    DEFINIR circulo(raio):
+        MEU.t.circle(raio)
+    FIM FUNCAO
+    
+    DEFINIR pronto():
+        _turtle.done()
+    FIM FUNCAO
+FIM CLASSE
+
+DEFINIR esperar(segundos):
+    _zeit.sleep(segundos)
+FIM FUNCAO
+
+DEFINIR numero_aleatorio(min, max):
+    RETORNO _rnd.randint(min, max)
+FIM FUNCAO

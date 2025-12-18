@@ -1,0 +1,52 @@
+# ESAME D'ARTE ZUSE
+# Disegniamo una casa con il sole!
+
+STAMPA "Il pittore si prepara..."
+
+# In modalita apprendimento, la classe 'Pittore' e disponibile.
+leonardo = Pittore()
+
+# 1. La Casa (Quadrato)
+leonardo.colore("blu")
+leonardo.spessore(5)
+
+STAMPA "Dipingendo la casa..."
+CICLO PER i IN [1, 2, 3, 4] FARE
+    leonardo.muovi(150)
+    leonardo.gira_destra(90)
+FINE CICLO
+
+# 2. Il Tetto (Triangolo)
+leonardo.colore("rosso")
+STAMPA "Coprendo il tetto..."
+
+leonardo.gira_sinistra(45)
+leonardo.muovi(106) 
+leonardo.gira_destra(90)
+leonardo.muovi(106)
+
+# Correggere la posizione
+leonardo.gira_destra(45)
+leonardo.gira_destra(90)
+leonardo.muovi(150)
+leonardo.gira_destra(180) 
+
+# 3. Il Sole (Cerchio)
+STAMPA "Adesso il sole!"
+
+leonardo.alza_penna()
+leonardo.muovi(200) 
+leonardo.gira_sinistra(90)
+leonardo.muovi(100) 
+leonardo.abbassa_penna()
+
+leonardo.colore("giallo")
+leonardo.spessore(10)
+leonardo.cerchio(40)
+
+# Firma
+leonardo.alza_penna()
+leonardo.muovi(100)
+STAMPA "Fatto! (Chiudi la finestra per uscire)"
+
+leonardo.fatto()

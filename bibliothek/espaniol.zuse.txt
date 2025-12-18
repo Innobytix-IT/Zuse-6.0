@@ -1,0 +1,86 @@
+# ZUSE BIBLIOTECA ESTANDAR (ESPANOL)
+
+USAR tkinter COMO _tk
+USAR turtle COMO _turtle
+USAR random COMO _rnd
+USAR time COMO _zeit
+
+CLASE Ventana:
+    DEFINIR CREAR(titulo, ancho, alto):
+        MIO.obj = _tk.Tk()
+        MIO.obj.title(titulo)
+        MIO.obj.geometry(str(ancho) + "x" + str(alto))
+    FIN FUNCION
+
+    DEFINIR iniciar():
+        MIO.obj.mainloop()
+    FIN FUNCION
+FIN CLASE
+
+CLASE Pintor:
+    DEFINIR CREAR():
+        MIO.t = _turtle.Turtle()
+        MIO.t.shape("turtle")
+        MIO.t.speed(3)
+        MIO.screen = _turtle.Screen()
+        MIO.screen.title("Escuela de Arte Zuse")
+    FIN FUNCION
+
+    DEFINIR mover(pasos):
+        MIO.t.forward(pasos)
+    FIN FUNCION
+
+    DEFINIR atras(pasos):
+        MIO.t.backward(pasos)
+    FIN FUNCION
+
+    DEFINIR girar_izquierda(grados):
+        MIO.t.left(grados)
+    FIN FUNCION
+
+    DEFINIR girar_derecha(grados):
+        MIO.t.right(grados)
+    FIN FUNCION
+
+    DEFINIR pluma_arriba():
+        MIO.t.penup()
+    FIN FUNCION
+
+    DEFINIR pluma_abajo():
+        MIO.t.pendown()
+    FIN FUNCION
+
+    DEFINIR color(c):
+        SI c == "rojo" ENTONCES
+            MIO.t.color("red")
+        SINO SI c == "azul" ENTONCES
+            MIO.t.color("blue")
+        SINO SI c == "verde" ENTONCES
+            MIO.t.color("green")
+        SINO SI c == "amarillo" ENTONCES
+            MIO.t.color("yellow")
+        SINO
+            MIO.t.color(c)
+        FIN SI
+    FIN FUNCION
+    
+    DEFINIR grosor(g):
+        MIO.t.pensize(g)
+    FIN FUNCION
+
+    DEFINIR circulo(radio):
+        MIO.t.circle(radio)
+    FIN FUNCION
+    
+    DEFINIR listo():
+        _turtle.done()
+    FIN FUNCION
+FIN CLASE
+
+DEFINIR esperar(segundos):
+    _zeit.sleep(segundos)
+FIN FUNCION
+
+DEFINIR numero_aleatorio(min, max):
+    RETORNO _rnd.randint(min, max)
+FIN FUNCION

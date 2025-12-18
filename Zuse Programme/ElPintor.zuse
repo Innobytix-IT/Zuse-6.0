@@ -1,0 +1,52 @@
+# EXAMEN DE ARTE ZUSE
+# ¡Dibujamos una casa con sol!
+
+IMPRIMIR "El pintor se prepara..."
+
+# Como estamos en modo de aprendizaje, la clase 'Pintor' está disponible.
+pablo = Pintor()
+
+# 1. La Casa (Cuadrado)
+pablo.color("azul")
+pablo.grosor(5)
+
+IMPRIMIR "Pintando la casa..."
+BUCLE PARA i EN [1, 2, 3, 4] HACER
+    pablo.mover(150)
+    pablo.girar_derecha(90)
+FIN BUCLE
+
+# 2. El Techo (Triangulo)
+pablo.color("rojo")
+IMPRIMIR "Cubriendo el techo..."
+
+pablo.girar_izquierda(45)
+pablo.mover(106) 
+pablo.girar_derecha(90)
+pablo.mover(106)
+
+# Corregir posición
+pablo.girar_derecha(45)
+pablo.girar_derecha(90)
+pablo.mover(150)
+pablo.girar_derecha(180) 
+
+# 3. El Sol (Circulo)
+IMPRIMIR "¡Ahora el sol!"
+
+pablo.pluma_arriba()
+pablo.mover(200) 
+pablo.girar_izquierda(90)
+pablo.mover(100) 
+pablo.pluma_abajo()
+
+pablo.color("amarillo")
+pablo.grosor(10)
+pablo.circulo(40)
+
+# Firma
+pablo.pluma_arriba()
+pablo.mover(100)
+IMPRIMIR "¡Listo! (Cierra la ventana para salir)"
+
+pablo.listo()

@@ -1,19 +1,24 @@
-# FILE: interpreter.py (Version ZUSE 6.0 GOD MODE)
+# FILE: interpreter.py (Version ZUSE 6.5 MULTILINGUAL CONSTRUCTOR)
 import time
 import math
 import random
 import datetime
 import threading
 import tkinter
-import importlib # <--- WICHTIG: Für dynamische Imports
+import importlib 
 
-# Standard-Module, die immer da sein sollen (Aliases)
+# Standard-Module (Aliase), die immer da sind
 ALLOWED_MODULES = {
     'mathe': math,
     'zufall': random,
     'zeit': time,
     'datum': datetime,
     'tkinter': tkinter
+}
+
+# Whitelist für den Lernmodus (echte Modulnamen)
+SAFE_MODULES_WHITELIST = {
+    'math', 'random', 'time', 'datetime', 'tkinter', 'turtle' 
 }
 
 class ZuseError(Exception):
@@ -107,8 +112,9 @@ class ZuseInstance:
         return None, None, None
 
 class Interpreter:
-    def __init__(self, output_callback=print, input_callback=input):
+    def __init__(self, output_callback=print, input_callback=input, safe_mode=False):
         self.global_env = Environment()
+        self.safe_mode = safe_mode 
         
         std_funcs = {
             'str': lambda x: str(x),
@@ -289,12 +295,21 @@ class Interpreter:
                 mod_name = node['modul']
                 alias = node['alias']
                 
+                # --- SICHERHEITS-CHECK (SAFE MODE) ---
+                if self.safe_mode:
+                    allowed = False
+                    if mod_name in ALLOWED_MODULES: allowed = True
+                    elif mod_name in SAFE_MODULES_WHITELIST: allowed = True
+                    
+                    if not allowed:
+                        raise ZuseError(f"Sicherheits-Sperre: Modul '{mod_name}' ist im Lernmodus nicht erlaubt.")
+                # -------------------------------------
+
                 # --- UNIVERSAL IMPORT (GOD MODE) ---
                 if mod_name in ALLOWED_MODULES:
                     env.define(alias, ALLOWED_MODULES[mod_name])
                 else:
                     try:
-                        # Versuche das Modul dynamisch aus der Python-Umgebung zu laden
                         imported_module = importlib.import_module(mod_name)
                         env.define(alias, imported_module)
                     except ImportError:
@@ -431,7 +446,9 @@ class Interpreter:
                 return self._call_function(func, args, env, self_obj=obj_eval, kwargs=kwargs)
 
             elif isinstance(obj_eval, ZuseClassWrapper):
-                if node['methode'] == 'ERSTELLE':
+                # FIX: Multilingual Constructor Check
+                is_constructor = node['methode'] in ['ERSTELLE', 'NEW', 'CREAR']
+                if is_constructor:
                     return self._call_function(obj_eval, args, env, kwargs=kwargs)
                 else:
                     raise ZuseError(f"Statische Methode '{node['methode']}' auf Klasse '{obj_eval.ast['name']}' nicht gefunden. Meintest du 'ERSTELLE'?")
@@ -483,10 +500,24 @@ class Interpreter:
         
         if isinstance(func, ZuseClassWrapper):
             inst = ZuseInstance(func, self)
-            constr, c_env, owner = inst.find_method('ERSTELLE')
+            
+            # --- MULTILINGUAL CONSTRUCTOR FIX ---
+            # Wir suchen nacheinander nach deutschen, englischen und spanischen Konstruktoren
+            # UPDATE: Jetzt auch mit Portugiesisch 'CRIAR'
+            possible_constructors = ['ERSTELLE', 'NEW', 'CREAR', 'CRIAR', 'CREER', 'CREARE']
+            constr = None
+            c_env = None
+            owner = None
+            
+            for c_name in possible_constructors:
+                constr, c_env, owner = inst.find_method(c_name)
+                if constr: break # Gefunden!
+            
             if constr:
-                c_func = ZuseFunction('ERSTELLE', constr['parameter'], constr['body'], c_env, owner_class=owner)
+                c_func = ZuseFunction(c_name, constr['parameter'], constr['body'], c_env, owner_class=owner)
                 self._call_function(c_func, args, caller_env, self_obj=inst, kwargs=kwargs)
+            # ------------------------------------
+            
             return inst
 
         if callable(func):

@@ -1,5 +1,9 @@
+# ZUSE STANDARD LIBRARY (ENGLISH)
+
 IMPORT tkinter AS _tk
-IMPORT zufall AS _rnd
+IMPORT turtle AS _turtle
+IMPORT random AS _rnd
+IMPORT time AS _zeit
 
 CLASS Window:
     DEFINE NEW(title, width, height):
@@ -12,3 +16,61 @@ CLASS Window:
         SELF.obj.mainloop()
     END FUNCTION
 END CLASS
+
+CLASS Painter:
+    DEFINE NEW():
+        SELF.t = _turtle.Turtle()
+        SELF.t.shape("turtle")
+        SELF.t.speed(3)
+        SELF.screen = _turtle.Screen()
+        SELF.screen.title("Zuse Art School")
+    END FUNCTION
+
+    DEFINE move(steps):
+        SELF.t.forward(steps)
+    END FUNCTION
+
+    DEFINE back(steps):
+        SELF.t.backward(steps)
+    END FUNCTION
+
+    DEFINE turn_left(degrees):
+        SELF.t.left(degrees)
+    END FUNCTION
+
+    DEFINE turn_right(degrees):
+        SELF.t.right(degrees)
+    END FUNCTION
+
+    DEFINE pen_up():
+        SELF.t.penup()
+    END FUNCTION
+
+    DEFINE pen_down():
+        SELF.t.pendown()
+    END FUNCTION
+
+    DEFINE color(c):
+        SELF.t.color(c)
+    END FUNCTION
+    
+    DEFINE width(w):
+        SELF.t.pensize(w)
+    END FUNCTION
+
+    DEFINE circle(radius):
+        SELF.t.circle(radius)
+    END FUNCTION
+    
+    DEFINE done():
+        _turtle.done()
+    END FUNCTION
+END CLASS
+
+DEFINE wait(seconds):
+    _zeit.sleep(seconds)
+END FUNCTION
+
+DEFINE random_number(min, max):
+    RETURN _rnd.randint(min, max)
+END FUNCTION
