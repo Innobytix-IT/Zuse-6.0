@@ -1,4 +1,4 @@
-# 📘 ZUSE v6.5 - Multilingual dition
+# 📘 ZUSE v6.5 - Multilingual edition
 
 **Die Multilinguale Programmiersprache, die auf der Macht von Python aufbaut.**
 
@@ -42,4 +42,5 @@ Zuse is a modern, multilingual programming language (German, English, Spanish, P
 
 
 # Zuse v6.5 is released under the MIT License (see License file).
+
 
