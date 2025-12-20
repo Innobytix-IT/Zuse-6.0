@@ -116,21 +116,23 @@ led = board.get_pin("d:13:o")
 led.write(1)
 ```
 
-**Weiere aktuelle Projekte:**
-*   **Infotaimant PeugeotDash / Car-PC:** Hierfür wird ein Arduino Shutdown-Controller gebaut, dessen Logik in Zuse geschrieben ist.
+**Weitere aktuelle Projekte:**
+*   **Infotainmant PeugeotDash / Car-PC:** Hierfür wird ein Arduino Shutdown-Controller gebaut, dessen Logik in Zuse geschrieben ist.
 
 ---
 
-## 🗺️ Roadmap (Zuse Universal Vision)
+## 🗺️ Roadmap (Zuse: The Universal Vision)
 
 *   [x] **v1.0 (v6.9):** Stabiler Interpreter, IDE, Bibliotheken (DE/EN/ES/PT/FR/IT).
 *   [ ] **v2.0 (Zuse Universal):** Entkopplung vom Python-Core durch eine **Intermediate Representation (IR)**. Entwicklung eines Transpilers unter anderem nach **JavaScript** (aber auch **C#** und **Java**), um Zuse-Programme zb. nativ im Browser (als PWA) auszuführen.
 
 ---
 
-**Architekt:** Manuel Person  
+**Architekt:** Manuel Person 
+**Co-Coding:** Gemini
 **Lizenz:** Open Source MIT
 
 ```
+
 
 
