@@ -121,7 +121,7 @@ led.write(1)
 
 ---
 
-## 🗺️ Roadmap (Zuse Universol Vision)
+## 🗺️ Roadmap (Zuse Universal Vision)
 
 *   [x] **v1.0 (v6.9):** Stabiler Interpreter, IDE, Bibliotheken (DE/EN/ES/PT/FR/IT).
 *   [ ] **v2.0 (Zuse Universal):** Entkopplung vom Python-Core durch eine **Intermediate Representation (IR)**. Entwicklung eines Transpilers unter anderem nach **JavaScript** (aber auch **C#** und **Java**), um Zuse-Programme zb. nativ im Browser (als PWA) auszuführen.
@@ -129,7 +129,8 @@ led.write(1)
 ---
 
 **Architekt:** Manuel Person  
-**Lizenz:** Open Source
+**Lizenz:** Open Source MIT
 
 ```
+
 
