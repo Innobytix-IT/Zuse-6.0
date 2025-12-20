@@ -1,4 +1,0 @@
-⚠️ Disclaimer
-Der Interpreter nutzt eval() und dynamische Imports. 
-Führe keine Zuse-Skripte aus nicht vertrauenswürdigen Quellen aus, 
-da diese vollen Zugriff auf das System haben (God Mode).
