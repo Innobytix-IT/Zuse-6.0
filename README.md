@@ -48,5 +48,12 @@ This project is open-source, and we welcome any form of support! ;)
 Zuse v6.5 is released under the MIT License (see License file).
 
 
+---
+
+**Architekt:** Manuel Person 
+**Co-Coding:** Gemini
+**Lizenz:** Open Source MIT
+
+```
 
 
