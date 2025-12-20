@@ -1,0 +1,13 @@
+USAR tkinter COMO _tk
+
+CLASE Ventana:
+    DEFINIR CREAR(titulo, ancho, alto):
+        MIO.obj = _tk.Tk()
+        MIO.obj.title(titulo)
+        MIO.obj.geometry(str(ancho) + "x" + str(alto))
+    FIN FUNCION
+
+    DEFINIR iniciar():
+        MIO.obj.mainloop()
+    FIN FUNCION
+FIN CLASE
