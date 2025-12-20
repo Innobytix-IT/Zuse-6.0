@@ -1,0 +1,142 @@
+# ZUSE STANDARD BIBLIOTHEK (DEUTSCH)
+# Version 6.9 FINAL (Clean)
+
+BENUTZE tkinter ALS _tk
+BENUTZE turtle ALS _turtle
+BENUTZE random ALS _rnd
+BENUTZE time ALS _zeit
+
+# --- KLASSE FÜR SPIELE (Snake & Co) ---
+KLASSE Fenster:
+    DEFINIERE ERSTELLE(titel, breite, hoehe):
+        VERSUCHE
+            WENN __UMGEBUNG__ == "STUDIO" DANN
+                MEIN.obj = _tk.Toplevel()
+                MEIN.obj.focus_force()
+                MEIN.obj.grab_set()
+            SONST
+                MEIN.obj = _tk.Tk()
+            ENDE WENN
+        FANGE
+            MEIN.obj = _tk.Tk()
+        ENDE VERSUCHE
+
+        MEIN.obj.title(titel)
+        MEIN.obj.geometry(str(breite) + "x" + str(hoehe))
+        MEIN.obj.resizable(falsch, falsch)
+        
+        MEIN.breite = breite
+        MEIN.hoehe = hoehe
+    ENDE FUNKTION
+    
+    DEFINIERE neue_leinwand(farbe):
+        leinwand = _tk.Canvas(MEIN.obj, width=MEIN.breite, height=MEIN.hoehe, bg=farbe)
+        leinwand.pack()
+        ERGEBNIS IST leinwand
+    ENDE FUNKTION
+    
+    DEFINIERE taste_druecken(taste, aktion):
+        key = taste
+        WENN taste == "Links" DANN key = "<Left>" ENDE WENN
+        WENN taste == "Rechts" DANN key = "<Right>" ENDE WENN
+        WENN taste == "Hoch" DANN key = "<Up>" ENDE WENN
+        WENN taste == "Runter" DANN key = "<Down>" ENDE WENN
+        WENN taste == "Leertaste" DANN key = "<space>" ENDE WENN
+        MEIN.obj.bind(key, aktion)
+    ENDE FUNKTION
+    
+    DEFINIERE nach_zeit(ms, funktion):
+        MEIN.obj.after(ms, funktion)
+    ENDE FUNKTION
+    
+    DEFINIERE setze_titel(text):
+        MEIN.obj.title(text)
+    ENDE FUNKTION
+    
+    DEFINIERE schliessen():
+        MEIN.obj.destroy()
+    ENDE FUNKTION
+    
+    DEFINIERE starte():
+        MEIN.obj.mainloop()
+    ENDE FUNKTION
+ENDE KLASSE
+
+# --- KLASSE MALER (Turtle) ---
+KLASSE Maler:
+    DEFINIERE ERSTELLE():
+        # Anti-Zombie-Fix
+        VERSUCHE
+            MEIN.screen = _turtle.Screen()
+            MEIN.screen.clearscreen()
+        FANGE
+            _turtle.TurtleScreen._RUNNING = wahr
+            MEIN.screen = _turtle.Screen()
+            MEIN.screen.clearscreen()
+        ENDE VERSUCHE
+        
+        _turtle.TurtleScreen._RUNNING = wahr
+        MEIN.t = _turtle.Turtle()
+        MEIN.t.shape("turtle")
+        MEIN.t.speed(3)
+        MEIN.screen.title("Zuse Malschule")
+    ENDE FUNKTION
+
+    DEFINIERE gehe(schritte):
+        MEIN.t.forward(schritte)
+    ENDE FUNKTION
+    DEFINIERE zurueck(schritte):
+        MEIN.t.backward(schritte)
+    ENDE FUNKTION
+    DEFINIERE drehe_links(grad):
+        MEIN.t.left(grad)
+    ENDE FUNKTION
+    DEFINIERE drehe_rechts(grad):
+        MEIN.t.right(grad)
+    ENDE FUNKTION
+    DEFINIERE stift_hoch():
+        MEIN.t.penup()
+    ENDE FUNKTION
+    DEFINIERE stift_runter():
+        MEIN.t.pendown()
+    ENDE FUNKTION
+    
+    # Robuste Farbabfrage
+    DEFINIERE farbe(f):
+        sauber = str(f).strip()
+        WENN sauber == "rot" DANN
+            MEIN.t.color("red")
+        SONST WENN sauber == "blau" DANN
+            MEIN.t.color("blue")
+        SONST WENN sauber == "gruen" DANN
+            MEIN.t.color("green")
+        SONST WENN sauber == "gelb" DANN
+            MEIN.t.color("yellow")
+        SONST WENN sauber == "schwarz" DANN
+            MEIN.t.color("black")
+        SONST WENN sauber == "weiss" DANN
+            MEIN.t.color("white")
+        SONST
+            MEIN.t.color(sauber)
+        ENDE WENN
+    ENDE FUNKTION
+    
+    DEFINIERE dicke(d):
+        MEIN.t.pensize(d)
+    ENDE FUNKTION
+    DEFINIERE kreis(radius):
+        MEIN.t.circle(radius)
+    ENDE FUNKTION
+    DEFINIERE fertig():
+        PASS
+    ENDE FUNKTION
+ENDE KLASSE
+
+# --- HILFSFUNKTIONEN ---
+DEFINIERE zufallszahl(min, max):
+    ERGEBNIS IST _rnd.randint(min, max)
+ENDE FUNKTION
+
+DEFINIERE warte(sekunden):
+    _zeit.sleep(sekunden)
+ENDE FUNKTION

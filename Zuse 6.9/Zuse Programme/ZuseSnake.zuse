@@ -1,0 +1,132 @@
+# ZUSESNAKE (Kinder-Edition)
+BENUTZE deutsch
+
+# Einstellungen
+BLOCK = 20
+BREITE = 400
+HOEHE = 400
+
+KLASSE SnakeSpiel:
+    DEFINIERE ERSTELLE():
+        # 1. Einfaches Fenster erstellen
+        MEIN.spiel = Fenster("ZuseSnake", BREITE, HOEHE)
+        
+        # 2. Leinwand holen (ohne komplizierte Imports)
+        MEIN.canvas = MEIN.spiel.neue_leinwand("black")
+
+        MEIN.start_spiel()
+
+        # 3. Einfache Tasten-Befehle (Deutsch!)
+        MEIN.spiel.taste_druecken("Links", MEIN.links)
+        MEIN.spiel.taste_druecken("Rechts", MEIN.rechts)
+        MEIN.spiel.taste_druecken("Hoch", MEIN.hoch)
+        MEIN.spiel.taste_druecken("Runter", MEIN.runter)
+        MEIN.spiel.taste_druecken("Leertaste", MEIN.neustart_check)
+
+        MEIN.loop()
+        MEIN.spiel.starte()
+    ENDE FUNKTION
+
+    DEFINIERE start_spiel():
+        MEIN.laeuft = wahr
+        MEIN.punkte = 0
+        MEIN.dx = 1
+        MEIN.dy = 0
+        MEIN.schlange = [[5, 10], [4, 10], [3, 10]]
+        MEIN.neues_futter()
+        MEIN.spiel.setze_titel("Punkte: 0")
+    ENDE FUNKTION
+
+    DEFINIERE neustart_check(event):
+        WENN MEIN.laeuft == falsch DANN MEIN.start_spiel() ENDE WENN
+    ENDE FUNKTION
+
+    # --- STEUERUNG ---
+    DEFINIERE links(event):
+        WENN MEIN.dx != 1 DANN MEIN.dx = -1 MEIN.dy = 0 ENDE WENN
+    ENDE FUNKTION
+    DEFINIERE rechts(event):
+        WENN MEIN.dx != -1 DANN MEIN.dx = 1 MEIN.dy = 0 ENDE WENN
+    ENDE FUNKTION
+    DEFINIERE hoch(event):
+        WENN MEIN.dy != 1 DANN MEIN.dx = 0 MEIN.dy = -1 ENDE WENN
+    ENDE FUNKTION
+    DEFINIERE runter(event):
+        WENN MEIN.dy != -1 DANN MEIN.dx = 0 MEIN.dy = 1 ENDE WENN
+    ENDE FUNKTION
+
+    # --- LOGIK ---
+    DEFINIERE neues_futter():
+        fx = zufallszahl(0, 19)
+        fy = zufallszahl(0, 19)
+        MEIN.futter = [fx, fy]
+    ENDE FUNKTION
+
+    DEFINIERE loop():
+        WENN MEIN.laeuft DANN
+            MEIN.bewegen()
+            MEIN.zeichnen()
+        ENDE WENN
+        # Timer über die einfache Fenster-Funktion
+        MEIN.spiel.nach_zeit(150, MEIN.loop)
+    ENDE FUNKTION
+
+    DEFINIERE bewegen():
+        kopf = MEIN.schlange[0]
+        neuer_x = kopf[0] + MEIN.dx
+        neuer_y = kopf[1] + MEIN.dy
+
+        # Kollision Wand
+        WENN neuer_x < 0 DANN MEIN.game_over() ENDE WENN
+        WENN neuer_x >= 20 DANN MEIN.game_over() ENDE WENN
+        WENN neuer_y < 0 DANN MEIN.game_over() ENDE WENN
+        WENN neuer_y >= 20 DANN MEIN.game_over() ENDE WENN
+
+        # Kollision Selbst
+        SCHLEIFE FÜR teil IN MEIN.schlange MACHE
+            WENN teil[0] == neuer_x DANN
+                WENN teil[1] == neuer_y DANN MEIN.game_over() ENDE WENN
+            ENDE WENN
+        ENDE SCHLEIFE
+
+        WENN MEIN.laeuft DANN
+            MEIN.schlange.insert(0, [neuer_x, neuer_y])
+
+            WENN neuer_x == MEIN.futter[0] DANN
+                WENN neuer_y == MEIN.futter[1] DANN
+                    MEIN.punkte = MEIN.punkte + 1
+                    MEIN.spiel.setze_titel("Punkte: " + str(MEIN.punkte))
+                    MEIN.neues_futter()
+                SONST
+                    MEIN.schlange.pop()
+                ENDE WENN
+            SONST
+                MEIN.schlange.pop()
+            ENDE WENN
+        ENDE WENN
+    ENDE FUNKTION
+
+    DEFINIERE game_over():
+        MEIN.laeuft = falsch
+        MEIN.canvas.create_text(BREITE/2, HOEHE/2, text="GAME OVER", fill="white", font="Arial 24 bold")
+    ENDE FUNKTION
+
+    DEFINIERE zeichnen():
+        MEIN.canvas.delete("all")
+        
+        fx = MEIN.futter[0] * BLOCK
+        fy = MEIN.futter[1] * BLOCK
+        MEIN.canvas.create_oval(fx, fy, fx+BLOCK, fy+BLOCK, fill="red")
+
+        SCHLEIFE FÜR teil IN MEIN.schlange MACHE
+            x = teil[0] * BLOCK
+            y = teil[1] * BLOCK
+            MEIN.canvas.create_rectangle(x, y, x+BLOCK, y+BLOCK, fill="lime")
+        ENDE SCHLEIFE
+    ENDE FUNKTION
+ENDE KLASSE
+
+app = SnakeSpiel.ERSTELLE()
+
+
+

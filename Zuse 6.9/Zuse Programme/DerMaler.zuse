@@ -1,0 +1,55 @@
+# ZUSE KUNST-EXAMEN
+# Wir zeichnen ein Haus mit Sonne!
+
+AUSGABE "Der Maler bereitet sich vor..."
+
+# Da wir im Lernmodus sind, ist die Klasse 'Maler' automatisch verfügbar.
+pablo = Maler()
+
+# 1. Das Haus (Quadrat)
+pablo.farbe("blau")
+pablo.dicke(5)
+
+AUSGABE "Ich male das Haus..."
+SCHLEIFE FÜR i IN [1, 2, 3, 4] MACHE
+    pablo.gehe(150)
+    pablo.drehe_rechts(90)
+ENDE SCHLEIFE
+
+# 2. Das Dach (Dreieck)
+pablo.farbe("rot")
+AUSGABE "Ich decke das Dach..."
+
+pablo.drehe_links(45)
+pablo.gehe(106) # Pythagoras lässt grüßen (ca. 150 / wurzel(2))
+pablo.drehe_rechts(90)
+pablo.gehe(106)
+
+# Position korrigieren (Blick nach unten rechts)
+pablo.drehe_rechts(45) 
+# Blick nach unten
+pablo.drehe_rechts(90)
+# Blick nach links (Richtung Start)
+pablo.gehe(150) 
+pablo.drehe_rechts(180) # Umdrehen, Blick nach rechts
+
+# 3. Die Sonne (Kreis)
+AUSGABE "Jetzt noch die Sonne!"
+
+pablo.stift_hoch()
+pablo.gehe(200) # Weg vom Haus
+pablo.drehe_links(90)
+pablo.gehe(100) # Rauf in den Himmel
+pablo.stift_runter()
+
+pablo.farbe("gelb")
+pablo.dicke(10)
+pablo.kreis(40)
+
+# Signatur
+pablo.stift_hoch()
+pablo.gehe(100)
+AUSGABE "Fertig! (Fenster schließen zum Beenden)"
+
+# Wichtig: Hält das Fenster offen
+pablo.fertig()

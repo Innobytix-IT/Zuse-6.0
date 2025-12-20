@@ -1,0 +1,142 @@
+# ZUSE SNAKE (Version 6.0)
+BENUTZE tkinter ALS tk
+BENUTZE zufall ALS random
+
+# Konfiguration
+BLOCK = 20
+BREITE = 400
+HOEHE = 400
+GRID_W = 20
+GRID_H = 20
+
+KLASSE SnakeSpiel:
+    DEFINIERE ERSTELLE():
+        # MEIN statt SELBST
+        MEIN.fenster = tk.Tk()
+        MEIN.fenster.title("Zuse Snake")
+        MEIN.fenster.geometry(str(BREITE) + "x" + str(HOEHE))
+        MEIN.fenster.resizable(falsch, falsch)
+
+        MEIN.canvas = tk.Canvas(MEIN.fenster, width=BREITE, height=HOEHE, bg="black")
+        MEIN.canvas.pack()
+
+        MEIN.start_spiel()
+
+        # Tasten binden (Interpreter v5.0 erlaubt Methodenübergabe)
+        MEIN.fenster.bind("<Left>", MEIN.links)
+        MEIN.fenster.bind("<Right>", MEIN.rechts)
+        MEIN.fenster.bind("<Up>", MEIN.hoch)
+        MEIN.fenster.bind("<Down>", MEIN.runter)
+        MEIN.fenster.bind("<space>", MEIN.neustart_check)
+
+        MEIN.loop()
+        MEIN.fenster.mainloop()
+    ENDE FUNKTION
+
+    DEFINIERE start_spiel():
+        MEIN.laeuft = wahr
+        MEIN.punkte = 0
+        MEIN.dx = 1
+        MEIN.dy = 0
+        MEIN.schlange = [[5, 10], [4, 10], [3, 10]]
+        MEIN.neues_futter()
+        MEIN.fenster.title("Punkte: 0")
+    ENDE FUNKTION
+
+    DEFINIERE neustart_check(event):
+        # Einzeiler-WENN (Parser v4.8+)
+        WENN MEIN.laeuft == falsch DANN MEIN.start_spiel() ENDE WENN
+    ENDE FUNKTION
+
+    # --- STEUERUNG ---
+    DEFINIERE links(event):
+        WENN MEIN.dx != 1 DANN MEIN.dx = -1 MEIN.dy = 0 ENDE WENN
+    ENDE FUNKTION
+
+    DEFINIERE rechts(event):
+        WENN MEIN.dx != -1 DANN MEIN.dx = 1 MEIN.dy = 0 ENDE WENN
+    ENDE FUNKTION
+
+    DEFINIERE hoch(event):
+        WENN MEIN.dy != 1 DANN MEIN.dx = 0 MEIN.dy = -1 ENDE WENN
+    ENDE FUNKTION
+
+    DEFINIERE runter(event):
+        WENN MEIN.dy != -1 DANN MEIN.dx = 0 MEIN.dy = 1 ENDE WENN
+    ENDE FUNKTION
+
+    # --- LOGIK ---
+    DEFINIERE neues_futter():
+        fx = random.randint(0, GRID_W - 1)
+        fy = random.randint(0, GRID_H - 1)
+        MEIN.futter = [fx, fy]
+    ENDE FUNKTION
+
+    DEFINIERE loop():
+        WENN MEIN.laeuft DANN
+            MEIN.bewegen()
+            MEIN.zeichnen()
+        ENDE WENN
+        MEIN.fenster.after(150, MEIN.loop)
+    ENDE FUNKTION
+
+    DEFINIERE bewegen():
+        kopf = MEIN.schlange[0]
+        neuer_x = kopf[0] + MEIN.dx
+        neuer_y = kopf[1] + MEIN.dy
+
+        # Einzeiler machen den Code lesbar:
+        WENN neuer_x < 0 DANN MEIN.game_over() ENDE WENN
+        WENN neuer_x >= GRID_W DANN MEIN.game_over() ENDE WENN
+        WENN neuer_y < 0 DANN MEIN.game_over() ENDE WENN
+        WENN neuer_y >= GRID_H DANN MEIN.game_over() ENDE WENN
+
+        # Schleife ohne 'SCHLEIFE' Wort (Parser v4.9)
+        FÜR teil IN MEIN.schlange MACHE
+            WENN teil[0] == neuer_x DANN
+                WENN teil[1] == neuer_y DANN MEIN.game_over() ENDE WENN
+            ENDE WENN
+        ENDE SCHLEIFE
+
+        WENN MEIN.laeuft DANN
+            neuer_kopf = [neuer_x, neuer_y]
+            MEIN.schlange.insert(0, neuer_kopf)
+
+            WENN neuer_x == MEIN.futter[0] DANN
+                WENN neuer_y == MEIN.futter[1] DANN
+                    MEIN.punkte = MEIN.punkte + 1
+                    MEIN.fenster.title("Punkte: " + str(MEIN.punkte))
+                    MEIN.neues_futter()
+                SONST
+                    MEIN.schlange.pop()
+                ENDE WENN
+            SONST
+                MEIN.schlange.pop()
+            ENDE WENN
+        ENDE WENN
+    ENDE FUNKTION
+
+    DEFINIERE game_over():
+        MEIN.laeuft = falsch
+        # Schriftart als String
+        MEIN.canvas.create_text(BREITE/2, HOEHE/2, text="GAME OVER", fill="white", font="Arial 24 bold")
+        MEIN.canvas.create_text(BREITE/2, HOEHE/2 + 30, text="Druecke LEERTASTE", fill="yellow", font="Arial 10")
+    ENDE FUNKTION
+
+    DEFINIERE zeichnen():
+        MEIN.canvas.delete("all")
+        
+        fx = MEIN.futter[0] * BLOCK
+        fy = MEIN.futter[1] * BLOCK
+        MEIN.canvas.create_oval(fx, fy, fx+BLOCK, fy+BLOCK, fill="red")
+
+        FÜR teil IN MEIN.schlange MACHE
+            x = teil[0] * BLOCK
+            y = teil[1] * BLOCK
+            MEIN.canvas.create_rectangle(x, y, x+BLOCK, y+BLOCK, fill="lime")
+        ENDE SCHLEIFE
+    ENDE FUNKTION
+
+ENDE KLASSE
+
+app = SnakeSpiel.ERSTELLE()

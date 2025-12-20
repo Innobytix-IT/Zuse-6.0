@@ -1,0 +1,23 @@
+KLASSE Opa:
+    DEFINIERE wer_bin_ich():
+        AUSGABE "Hier spricht der Opa."
+    ENDE FUNKTION
+ENDE KLASSE
+
+KLASSE Papa(Opa):
+    DEFINIERE wer_bin_ich():
+        AUSGABE "Hier spricht der Papa. Ich frage Opa:"
+        ELTERN.wer_bin_ich()
+    ENDE FUNKTION
+ENDE KLASSE
+
+KLASSE Kind(Papa):
+    DEFINIERE wer_bin_ich():
+        AUSGABE "Hier spricht das Kind. Ich frage Papa:"
+        ELTERN.wer_bin_ich()
+    ENDE FUNKTION
+ENDE KLASSE
+
+# Testlauf
+k = Kind.ERSTELLE()
+k.wer_bin_ich()

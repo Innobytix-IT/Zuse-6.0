@@ -1,0 +1,32 @@
+# 1. Klassen und OOP (Kindgerecht)
+CLASS Hund
+    DEFINE ERSTELLE(name)
+        SELF.name = name
+    END FUNCTION
+    
+    DEFINE bellen()
+        PRINT "Wuff! Ich bin " + SELF.name
+    END FUNCTION
+END CLASS
+
+mein_hund = Hund("Bello")
+mein_hund.bellen()
+
+# 2. Rechnen
+PRINT "2 hoch 3 ist:"
+PRINT 2 ^ 3
+
+PRINT "10 Modulo 3 ist:"
+PRINT 10 % 3
+
+# 3. Dictionaries (Wörterbücher)
+daten = { "Name": "Max", "Alter": 10 }
+PRINT "Name im Buch:"
+PRINT daten["Name"]
+
+# 4. Fehler abfangen
+TRY
+    PRINT 10 / 0
+CATCH
+    PRINT "Oh nein! Durch Null teilen geht nicht."
+END TRY

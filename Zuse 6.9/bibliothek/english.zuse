@@ -1,0 +1,140 @@
+# ZUSE STANDARD LIBRARY (ENGLISH)
+# Version 6.9 FINAL
+
+IMPORT tkinter AS _tk
+IMPORT turtle AS _turtle
+IMPORT random AS _rnd
+IMPORT time AS _zeit
+
+# --- CLASS FOR GAMES (Snake & Co) ---
+CLASS Window:
+    DEFINE NEW(title, width, height):
+        TRY
+            IF __UMGEBUNG__ == "STUDIO" THEN
+                SELF.obj = _tk.Toplevel()
+                SELF.obj.focus_force()
+                SELF.obj.grab_set()
+            ELSE
+                SELF.obj = _tk.Tk()
+            END IF
+        CATCH
+            SELF.obj = _tk.Tk()
+        END TRY
+
+        SELF.obj.title(title)
+        SELF.obj.geometry(str(width) + "x" + str(height))
+        SELF.obj.resizable(false, false)
+        
+        SELF.w = width
+        SELF.h = height
+    END FUNCTION
+    
+    DEFINE new_canvas(color):
+        canvas = _tk.Canvas(SELF.obj, width=SELF.w, height=SELF.h, bg=color)
+        canvas.pack()
+        RETURN canvas
+    END FUNCTION
+    
+    DEFINE press_key(key_name, action):
+        k = key_name
+        IF key_name == "Left" THEN k = "<Left>" END IF
+        IF key_name == "Right" THEN k = "<Right>" END IF
+        IF key_name == "Up" THEN k = "<Up>" END IF
+        IF key_name == "Down" THEN k = "<Down>" END IF
+        IF key_name == "Space" THEN k = "<space>" END IF
+        SELF.obj.bind(k, action)
+    END FUNCTION
+    
+    DEFINE after_time(ms, function):
+        SELF.obj.after(ms, function)
+    END FUNCTION
+    
+    DEFINE set_title(text):
+        SELF.obj.title(text)
+    END FUNCTION
+    
+    DEFINE close():
+        SELF.obj.destroy()
+    END FUNCTION
+    
+    DEFINE run():
+        SELF.obj.mainloop()
+    END FUNCTION
+END CLASS
+
+# --- CLASS PAINTER (Turtle) ---
+CLASS Painter:
+    DEFINE NEW():
+        # Anti-Zombie-Fix
+        TRY
+            SELF.screen = _turtle.Screen()
+            SELF.screen.clearscreen()
+        CATCH
+            _turtle.TurtleScreen._RUNNING = true
+            SELF.screen = _turtle.Screen()
+            SELF.screen.clearscreen()
+        END TRY
+        
+        _turtle.TurtleScreen._RUNNING = true
+        SELF.t = _turtle.Turtle()
+        SELF.t.shape("turtle")
+        SELF.t.speed(3)
+        SELF.screen.title("Zuse Art School")
+    END FUNCTION
+
+    DEFINE move(steps):
+        SELF.t.forward(steps)
+    END FUNCTION
+    DEFINE back(steps):
+        SELF.t.backward(steps)
+    END FUNCTION
+    DEFINE turn_left(degrees):
+        SELF.t.left(degrees)
+    END FUNCTION
+    DEFINE turn_right(degrees):
+        SELF.t.right(degrees)
+    END FUNCTION
+    DEFINE pen_up():
+        SELF.t.penup()
+    END FUNCTION
+    DEFINE pen_down():
+        SELF.t.pendown()
+    END FUNCTION
+    
+    DEFINE color(c):
+        clean = str(c).strip()
+        IF clean == "red" THEN
+            SELF.t.color("red")
+        ELSE IF clean == "blue" THEN
+            SELF.t.color("blue")
+        ELSE IF clean == "green" THEN
+            SELF.t.color("green")
+        ELSE IF clean == "yellow" THEN
+            SELF.t.color("yellow")
+        ELSE IF clean == "black" THEN
+            SELF.t.color("black")
+        ELSE IF clean == "white" THEN
+            SELF.t.color("white")
+        ELSE
+            SELF.t.color(clean)
+        END IF
+    END FUNCTION
+    
+    DEFINE width(w):
+        SELF.t.pensize(w)
+    END FUNCTION
+    DEFINE circle(radius):
+        SELF.t.circle(radius)
+    END FUNCTION
+    DEFINE done():
+        PASS
+    END FUNCTION
+END CLASS
+
+DEFINE random_number(min, max):
+    RETURN _rnd.randint(min, max)
+END FUNCTION
+
+DEFINE wait(seconds):
+    _zeit.sleep(seconds)
+END FUNCTION

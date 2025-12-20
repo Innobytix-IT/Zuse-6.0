@@ -1,0 +1,46 @@
+# TEST: Punkt-vor-Strich Logik
+# Erwartung: 2 + 3 * 4 muss 14 ergeben, NICHT 20.
+
+AUSGABE "--- START MATHE TEST ---"
+
+# Test 1: Einfache Punkt-vor-Strich
+rechnung1 = 2 + 3 * 4
+AUSGABE "Rechnung: 2 + 3 * 4"
+AUSGABE "Erwartet: 14"
+AUSGABE "Ergebnis: " + str(rechnung1)
+
+WENN rechnung1 == 14 DANN
+    AUSGABE "✅ TEST 1 BESTANDEN"
+SONST
+    AUSGABE "❌ TEST 1 FEHLGESCHLAGEN"
+ENDE WENN
+
+AUSGABE "------------------------"
+
+# Test 2: Mit Klammern (sollte Punkt-vor-Strich übersteuern)
+rechnung2 = (2 + 3) * 4
+AUSGABE "Rechnung: (2 + 3) * 4"
+AUSGABE "Erwartet: 20"
+AUSGABE "Ergebnis: " + str(rechnung2)
+
+WENN rechnung2 == 20 DANN
+    AUSGABE "✅ TEST 2 BESTANDEN"
+SONST
+    AUSGABE "❌ TEST 2 FEHLGESCHLAGEN"
+ENDE WENN
+
+AUSGABE "------------------------"
+
+# Test 3: Geteilt und Minus
+rechnung3 = 10 - 6 / 2
+AUSGABE "Rechnung: 10 - 6 / 2"
+AUSGABE "Erwartet: 7"
+AUSGABE "Ergebnis: " + str(rechnung3)
+
+WENN rechnung3 == 7 DANN
+    AUSGABE "✅ TEST 3 BESTANDEN"
+SONST
+    AUSGABE "❌ TEST 3 FEHLGESCHLAGEN"
+ENDE WENN
+
+AUSGABE "--- ENDE MATHE TEST ---"

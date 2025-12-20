@@ -1,0 +1,137 @@
+# ZUSE BIBLIOTECA PADRAO (PORTUGUES)
+# Version 6.9 FINAL
+
+USAR tkinter COMO _tk
+USAR turtle COMO _turtle
+USAR random COMO _rnd
+USAR time COMO _zeit
+
+CLASSE Janela:
+    DEFINIR CRIAR(titulo, largura, altura):
+        TENTAR
+            SE __UMGEBUNG__ == "STUDIO" ENTAO
+                MEU.obj = _tk.Toplevel()
+                MEU.obj.focus_force()
+                MEU.obj.grab_set()
+            SENAO
+                MEU.obj = _tk.Tk()
+            FIM SE
+        PEGAR
+            MEU.obj = _tk.Tk()
+        FIM TENTAR
+
+        MEU.obj.title(titulo)
+        MEU.obj.geometry(str(largura) + "x" + str(altura))
+        MEU.obj.resizable(falso, falso)
+        
+        MEU.w = largura
+        MEU.h = altura
+    FIM FUNCAO
+    
+    DEFINIR nova_tela(cor):
+        tela = _tk.Canvas(MEU.obj, width=MEU.w, height=MEU.h, bg=cor)
+        tela.pack()
+        RETORNO tela
+    FIM FUNCAO
+    
+    DEFINIR pressionar_tecla(tecla, acao):
+        k = tecla
+        SE tecla == "Esquerda" ENTAO k = "<Left>" FIM SE
+        SE tecla == "Direita" ENTAO k = "<Right>" FIM SE
+        SE tecla == "Cima" ENTAO k = "<Up>" FIM SE
+        SE tecla == "Baixo" ENTAO k = "<Down>" FIM SE
+        SE tecla == "Espaco" ENTAO k = "<space>" FIM SE
+        MEU.obj.bind(k, acao)
+    FIM FUNCAO
+    
+    DEFINIR apos_tempo(ms, funcao):
+        MEU.obj.after(ms, funcao)
+    FIM FUNCAO
+    
+    DEFINIR definir_titulo(texto):
+        MEU.obj.title(texto)
+    FIM FUNCAO
+    
+    DEFINIR fechar():
+        MEU.obj.destroy()
+    FIM FUNCAO
+    
+    DEFINIR iniciar():
+        MEU.obj.mainloop()
+    FIM FUNCAO
+FIM CLASSE
+
+CLASSE Pintor:
+    DEFINIR CRIAR():
+        TENTAR
+            MEU.screen = _turtle.Screen()
+            MEU.screen.clearscreen()
+        PEGAR
+            _turtle.TurtleScreen._RUNNING = verdadeiro
+            MEU.screen = _turtle.Screen()
+            MEU.screen.clearscreen()
+        FIM TENTAR
+        
+        _turtle.TurtleScreen._RUNNING = verdadeiro
+        MEU.t = _turtle.Turtle()
+        MEU.t.shape("turtle")
+        MEU.t.speed(3)
+        MEU.screen.title("Escola de Arte Zuse")
+    FIM FUNCAO
+
+    DEFINIR mover(passos):
+        MEU.t.forward(passos)
+    FIM FUNCAO
+    DEFINIR voltar(passos):
+        MEU.t.backward(passos)
+    FIM FUNCAO
+    DEFINIR virar_esquerda(graus):
+        MEU.t.left(graus)
+    FIM FUNCAO
+    DEFINIR virar_direita(graus):
+        MEU.t.right(graus)
+    FIM FUNCAO
+    DEFINIR caneta_sobe():
+        MEU.t.penup()
+    FIM FUNCAO
+    DEFINIR caneta_desce():
+        MEU.t.pendown()
+    FIM FUNCAO
+    
+    DEFINIR cor(c):
+        limpo = str(c).strip()
+        SE limpo == "vermelho" ENTAO
+            MEU.t.color("red")
+        SENAO SE limpo == "azul" ENTAO
+            MEU.t.color("blue")
+        SENAO SE limpo == "verde" ENTAO
+            MEU.t.color("green")
+        SENAO SE limpo == "amarelo" ENTAO
+            MEU.t.color("yellow")
+        SENAO SE limpo == "preto" ENTAO
+            MEU.t.color("black")
+        SENAO SE limpo == "branco" ENTAO
+            MEU.t.color("white")
+        SENAO
+            MEU.t.color(limpo)
+        FIM SE
+    FIM FUNCAO
+    
+    DEFINIR espessura(e):
+        MEU.t.pensize(e)
+    FIM FUNCAO
+    DEFINIR circulo(raio):
+        MEU.t.circle(raio)
+    FIM FUNCAO
+    DEFINIR pronto():
+        PASS
+    FIM FUNCAO
+FIM CLASSE
+
+DEFINIR numero_aleatorio(min, max):
+    RETORNO _rnd.randint(min, max)
+FIM FUNCAO
+
+DEFINIR esperar(segundos):
+    _zeit.sleep(segundos)
+FIM FUNCAO

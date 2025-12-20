@@ -1,0 +1,137 @@
+# ZUSE BIBLIOTHEQUE STANDARD (FRANCAIS)
+# Version 6.9 FINAL
+
+UTILISER tkinter COMME _tk
+UTILISER turtle COMME _turtle
+UTILISER random COMME _rnd
+UTILISER time COMME _zeit
+
+CLASSE Fenetre:
+    DEFINIR CREER(titre, largeur, hauteur):
+        ESSAYER
+            SI __UMGEBUNG__ == "STUDIO" ALORS
+                MOI.obj = _tk.Toplevel()
+                MOI.obj.focus_force()
+                MOI.obj.grab_set()
+            SINON
+                MOI.obj = _tk.Tk()
+            FIN SI
+        ATTRAPER
+            MOI.obj = _tk.Tk()
+        FIN ESSAYER
+
+        MOI.obj.title(titre)
+        MOI.obj.geometry(str(largeur) + "x" + str(hauteur))
+        MOI.obj.resizable(faux, faux)
+        
+        MOI.w = largeur
+        MOI.h = hauteur
+    FIN FONCTION
+    
+    DEFINIR nouvelle_toile(couleur):
+        toile = _tk.Canvas(MOI.obj, width=MOI.w, height=MOI.h, bg=couleur)
+        toile.pack()
+        RETOURNER toile
+    FIN FONCTION
+    
+    DEFINIR appuyer_touche(touche, action):
+        k = touche
+        SI touche == "Gauche" ALORS k = "<Left>" FIN SI
+        SI touche == "Droite" ALORS k = "<Right>" FIN SI
+        SI touche == "Haut" ALORS k = "<Up>" FIN SI
+        SI touche == "Bas" ALORS k = "<Down>" FIN SI
+        SI touche == "Espace" ALORS k = "<space>" FIN SI
+        MOI.obj.bind(k, action)
+    FIN FONCTION
+    
+    DEFINIR apres_temps(ms, fonction):
+        MOI.obj.after(ms, fonction)
+    FIN FONCTION
+    
+    DEFINIR definir_titre(texte):
+        MOI.obj.title(texte)
+    FIN FONCTION
+    
+    DEFINIR fermer():
+        MOI.obj.destroy()
+    FIN FONCTION
+    
+    DEFINIR lancer():
+        MOI.obj.mainloop()
+    FIN FONCTION
+FIN CLASSE
+
+CLASSE Peintre:
+    DEFINIR CREER():
+        ESSAYER
+            MOI.screen = _turtle.Screen()
+            MOI.screen.clearscreen()
+        ATTRAPER
+            _turtle.TurtleScreen._RUNNING = vrai
+            MOI.screen = _turtle.Screen()
+            MOI.screen.clearscreen()
+        FIN ESSAYER
+        
+        _turtle.TurtleScreen._RUNNING = vrai
+        MOI.t = _turtle.Turtle()
+        MOI.t.shape("turtle")
+        MOI.t.speed(3)
+        MOI.screen.title("Ecole d'Art Zuse")
+    FIN FONCTION
+
+    DEFINIR avancer(pas):
+        MOI.t.forward(pas)
+    FIN FONCTION
+    DEFINIR reculer(pas):
+        MOI.t.backward(pas)
+    FIN FONCTION
+    DEFINIR tourner_gauche(degres):
+        MOI.t.left(degres)
+    FIN FONCTION
+    DEFINIR tourner_droite(degres):
+        MOI.t.right(degres)
+    FIN FONCTION
+    DEFINIR lever_crayon():
+        MOI.t.penup()
+    FIN FONCTION
+    DEFINIR poser_crayon():
+        MOI.t.pendown()
+    FIN FONCTION
+    
+    DEFINIR couleur(c):
+        propre = str(c).strip()
+        SI propre == "rouge" ALORS
+            MOI.t.color("red")
+        SINON SI propre == "bleu" ALORS
+            MOI.t.color("blue")
+        SINON SI propre == "vert" ALORS
+            MOI.t.color("green")
+        SINON SI propre == "jaune" ALORS
+            MOI.t.color("yellow")
+        SINON SI propre == "noir" ALORS
+            MOI.t.color("black")
+        SINON SI propre == "blanc" ALORS
+            MOI.t.color("white")
+        SINON
+            MOI.t.color(propre)
+        FIN SI
+    FIN FONCTION
+    
+    DEFINIR epaisseur(e):
+        MOI.t.pensize(e)
+    FIN FONCTION
+    DEFINIR cercle(rayon):
+        MOI.t.circle(rayon)
+    FIN FONCTION
+    DEFINIR fini():
+        PASS
+    FIN FONCTION
+FIN CLASSE
+
+DEFINIR nombre_aleatoire(min, max):
+    RETOURNER _rnd.randint(min, max)
+FIN FONCTION
+
+DEFINIR attendre(secondes):
+    _zeit.sleep(secondes)
+FIN FONCTION

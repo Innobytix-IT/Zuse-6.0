@@ -1,0 +1,82 @@
+# ZUSE BIBLIOTHEQUE STANDARD (FRANCAIS)
+
+UTILISER tkinter COMME _tk
+UTILISER turtle COMME _turtle
+UTILISER random COMME _rnd
+UTILISER time COMME _zeit
+
+CLASSE Fenetre:
+    DEFINIR CREER(titre, largeur, hauteur):
+        MOI.obj = _tk.Tk()
+        MOI.obj.title(titre)
+        MOI.obj.geometry(str(largeur) + "x" + str(hauteur))
+    FIN FONCTION
+
+    DEFINIR lancer():
+        MOI.obj.mainloop()
+    FIN FONCTION
+FIN CLASSE
+
+CLASSE Peintre:
+    DEFINIR CREER():
+        MOI.t = _turtle.Turtle()
+        MOI.t.shape("turtle")
+        MOI.t.speed(3)
+        MOI.screen = _turtle.Screen()
+        MOI.screen.title("Ecole d'Art Zuse")
+    FIN FONCTION
+
+    DEFINIR avancer(pas):
+        MOI.t.forward(pas)
+    FIN FONCTION
+
+    DEFINIR reculer(pas):
+        MOI.t.backward(pas)
+    FIN FONCTION
+
+    DEFINIR tourner_gauche(degres):
+        MOI.t.left(degres)
+    FIN FONCTION
+
+    DEFINIR tourner_droite(degres):
+        MOI.t.right(degres)
+    FIN FONCTION
+
+    DEFINIR lever_crayon():
+        MOI.t.penup()
+    FIN FONCTION
+
+    DEFINIR poser_crayon():
+        MOI.t.pendown()
+    FIN FONCTION
+
+    DEFINIR couleur(c):
+        SI c == "rouge" ALORS
+            MOI.t.color("red")
+        SINON SI c == "bleu" ALORS
+            MOI.t.color("blue")
+        SINON SI c == "vert" ALORS
+            MOI.t.color("green")
+        SINON SI c == "jaune" ALORS
+            MOI.t.color("yellow")
+        SINON
+            MOI.t.color(c)
+        FIN SI
+    FIN FONCTION
+    
+    DEFINIR epaisseur(e):
+        MOI.t.pensize(e)
+    FIN FONCTION
+
+    DEFINIR cercle(rayon):
+        MOI.t.circle(rayon)
+    FIN FONCTION
+    
+    DEFINIR fini():
+        _turtle.done()
+    FIN FONCTION
+FIN CLASSE
+
+DEFINIR attendre(secondes):
+    _zeit.sleep(secondes)
+FIN FONCTION

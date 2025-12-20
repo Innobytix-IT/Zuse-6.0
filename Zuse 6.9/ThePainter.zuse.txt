@@ -1,0 +1,55 @@
+# ZUSE ART EXAM
+# We are drawing a house with a sun!
+
+PRINT "The painter prepares..."
+
+# Since we are in learning mode, the class 'Painter' is automatically available.
+pablo = Painter()
+
+# 1. The House (Square)
+pablo.color("blue")
+pablo.width(5)
+
+PRINT "Painting the house..."
+LOOP FOR i IN [1, 2, 3, 4] DO
+    pablo.move(150)
+    pablo.turn_right(90)
+END LOOP
+
+# 2. The Roof (Triangle)
+pablo.color("red")
+PRINT "Covering the roof..."
+
+pablo.turn_left(45)
+pablo.move(106) # Pythagoras sends regards (approx. 150 / sqrt(2))
+pablo.turn_right(90)
+pablo.move(106)
+
+# Correct position (Looking down right)
+pablo.turn_right(45)
+# Looking down
+pablo.turn_right(90)
+# Looking left (Towards start)
+pablo.move(150)
+pablo.turn_right(180) # Turn around, look right
+
+# 3. The Sun (Circle)
+PRINT "Now the sun!"
+
+pablo.pen_up()
+pablo.move(200) # Away from house
+pablo.turn_left(90)
+pablo.move(100) # Up into the sky
+pablo.pen_down()
+
+pablo.color("yellow")
+pablo.width(10)
+pablo.circle(40)
+
+# Signature
+pablo.pen_up()
+pablo.move(100)
+PRINT "Done! (Close window to exit)"
+
+# Keeps window open
+pablo.done()

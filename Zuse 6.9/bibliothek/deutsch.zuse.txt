@@ -1,0 +1,98 @@
+# ZUSE STANDARD BIBLIOTHEK (DEUTSCH)
+# Diese Datei wird automatisch vor jedem Programm geladen.
+
+# --- INTERNE IMPORTE ---
+# Wir benutzen Aliasse mit Unterstrich, um den Namensraum sauber zu halten
+BENUTZE tkinter ALS _tk
+BENUTZE turtle ALS _turtle
+BENUTZE random ALS _rnd
+BENUTZE time ALS _zeit
+
+# --- GRAFISCHE OBERFLÄCHE (Wrapper für tkinter) ---
+KLASSE Fenster:
+    DEFINIERE ERSTELLE(titel, breite, hoehe):
+        MEIN.obj = _tk.Tk()
+        MEIN.obj.title(titel)
+        MEIN.obj.geometry(str(breite) + "x" + str(hoehe))
+    ENDE FUNKTION
+    
+    DEFINIERE starte():
+        MEIN.obj.mainloop()
+    ENDE FUNKTION
+ENDE KLASSE
+
+# --- SCHILDKRÖTEN-GRAFIK (Wrapper für turtle) ---
+# Perfekt für Kinder um Programmieren zu lernen
+KLASSE Maler:
+    DEFINIERE ERSTELLE():
+        MEIN.t = _turtle.Turtle()
+        MEIN.t.shape("turtle") # Wir wollen eine Schildkröte sehen
+        MEIN.t.speed(3)        # Moderate Geschwindigkeit
+        MEIN.screen = _turtle.Screen()
+        MEIN.screen.title("Zuse Malschule")
+    ENDE FUNKTION
+
+    DEFINIERE gehe(schritte):
+        MEIN.t.forward(schritte)
+    ENDE FUNKTION
+
+    DEFINIERE zurueck(schritte):
+        MEIN.t.backward(schritte)
+    ENDE FUNKTION
+
+    DEFINIERE drehe_links(grad):
+        MEIN.t.left(grad)
+    ENDE FUNKTION
+
+    DEFINIERE drehe_rechts(grad):
+        MEIN.t.right(grad)
+    ENDE FUNKTION
+
+    DEFINIERE stift_hoch():
+        MEIN.t.penup()
+    ENDE FUNKTION
+
+    DEFINIERE stift_runter():
+        MEIN.t.pendown()
+    ENDE FUNKTION
+
+    DEFINIERE farbe(f):
+        # Einfache Übersetzung für Kinder
+        WENN f == "rot" DANN
+            MEIN.t.color("red")
+        SONST WENN f == "blau" DANN
+            MEIN.t.color("blue")
+        SONST WENN f == "gruen" DANN
+            MEIN.t.color("green")
+        SONST WENN f == "gelb" DANN
+            MEIN.t.color("yellow")
+        SONST WENN f == "schwarz" DANN
+            MEIN.t.color("black")
+        SONST
+            # Fallback für englische Namen oder Hex-Codes
+            MEIN.t.color(f)
+        ENDE WENN
+    ENDE FUNKTION
+    
+    DEFINIERE dicke(d):
+        MEIN.t.pensize(d)
+    ENDE FUNKTION
+
+    DEFINIERE kreis(radius):
+        MEIN.t.circle(radius)
+    ENDE FUNKTION
+    
+    DEFINIERE fertig():
+        _turtle.done()
+    ENDE FUNKTION
+ENDE KLASSE
+
+# --- HILFSFUNKTIONEN ---
+
+DEFINIERE warte(sekunden):
+    _zeit.sleep(sekunden)
+ENDE FUNKTION
+
+DEFINIERE zufallszahl(min, max):
+    ERGEBNIS IST _rnd.randint(min, max)
+ENDE FUNKTION

@@ -1,0 +1,52 @@
+# EXAME DE ARTE ZUSE (PORTUGAL)
+# Vamos desenhar uma casa com sol!
+
+IMPRIMIR "O pintor esta a preparar-se..."
+
+# A classe 'Pintor' esta disponivel automaticamente.
+joao = Pintor()
+
+# 1. A Casa (Quadrado)
+joao.cor("azul")
+joao.espessura(5)
+
+IMPRIMIR "A pintar a casa..."
+CICLO PARA i EM [1, 2, 3, 4] FACA
+    joao.mover(150)
+    joao.virar_direita(90)
+FIM CICLO
+
+# 2. O Telhado (Triangulo)
+joao.cor("vermelho")
+IMPRIMIR "A fazer o telhado..."
+
+joao.virar_esquerda(45)
+joao.mover(106) 
+joao.virar_direita(90)
+joao.mover(106)
+
+# Corrigir posicao
+joao.virar_direita(45)
+joao.virar_direita(90)
+joao.mover(150)
+joao.virar_direita(180) 
+
+# 3. O Sol (Circulo)
+IMPRIMIR "Agora o sol!"
+
+joao.caneta_sobe()
+joao.mover(200) 
+joao.virar_esquerda(90)
+joao.mover(100) 
+joao.caneta_desce()
+
+joao.cor("amarelo")
+joao.espessura(10)
+joao.circulo(40)
+
+# Assinatura
+joao.caneta_sobe()
+joao.mover(100)
+IMPRIMIR "Pronto! (Feche a janela para sair)"
+
+joao.pronto()
