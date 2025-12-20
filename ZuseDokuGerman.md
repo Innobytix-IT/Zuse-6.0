@@ -1,7 +1,7 @@
 # ZUSE 🖥️
 > **"Einfach weil 'Einfach' einfach ist."**
 
-![Version](https://img.shields.io/badge/Version-6.9_Final_Core-blue) ![Language](https://img.shields.io/badge/Made_with-Python-yellow) ![Status](https://img.shields.io/badge/Status-Stable-green)
+![Version](https://img.shields.io/badge/Version-6.x-blue) ![Language](https://img.shields.io/badge/Made_with-Python-yellow) ![Status](https://img.shields.io/badge/Status-Stable-green)
 
 **Zuse** ist eine objektorientierte, interpretierte Programmiersprache, die entwickelt wurde, um die Barriere zwischen "Lern-Sprachen" (wie Scratch) und "Profi-Sprachen" (wie Python/C++) zu durchbrechen.
 
@@ -116,18 +116,19 @@ led = board.get_pin("d:13:o")
 led.write(1)
 ```
 
-**Aktuelle Projekte:**
-*   **PeugeotDash Car-PC:** Ein Shutdown-Controller, dessen Logik in Zuse geschrieben ist.
+**Weiere aktuelle Projekte:**
+*   **Infotaimant PeugeotDash / Car-PC:** Hierfür wird ein Arduino Shutdown-Controller gebaut, dessen Logik in Zuse geschrieben ist.
 
 ---
 
 ## 🗺️ Roadmap (Zuse 2.0 Vision)
 
 *   [x] **v1.0 (v6.9):** Stabiler Interpreter, IDE, Bibliotheken (DE/EN/ES/PT/FR/IT).
-*   [ ] **v2.0:** Entwicklung einer **Intermediate Representation (IR)** und eines Transpilers nach **JavaScript**, um Zuse-Programme direkt im Browser (WebAssembly/JS) auszuführen (Ziel: PWA Pilger-App).
+*   [ ] **v2.0 (Zuse Universal):** Entkopplung vom Python-Core durch eine **Intermediate Representation (IR)**. Entwicklung eines Transpilers unter anderem nach **JavaScript** (aber auch **C#** und **Java**), um Zuse-Programme zb. nativ im Browser (als PWA) auszuführen.
 
 ---
 
 **Architekt:** Manuel Person  
 **Lizenz:** Open Source
+
 ```
