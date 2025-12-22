@@ -27,15 +27,6 @@ Die daraus resultierende Philosophie
 bildet das Fundament dieses Projekts.
 
 
-## 🙏 Danksagung & Projektphilosophie
-
-Dieses Projekt ist das Ergebnis einer Vision, die durch den Einsatz moderner KI-Werkzeuge Wirklichkeit werden konnte. Es ist ein Beispiel für Selbstverwirklichung und den Wunsch, nützliche und freie Software für alle zugänglich zu machen.
-
-Mein aufrichtiger Dank gilt den Entwicklern und Forschern, deren Arbeit diese Werkzeuge ermöglicht hat. In diesem Projekt fungierten sie als unermüdliche digitale Assistenten, die den Code schrieben, während die Vision, die Architektur und die Leitung des Projekts in meiner Verantwortung lagen. Gott sei Dank konnte ich dadurch meine persönlichen Ressourcen hauptsächlich auf Design- und Architekturfragen, die Funktionsweisen und den Inhalt der Software konzentrieren, anstatt mühevoll Codezeile für Codezeile selbst zu schreiben.
-
-Ich bin zutiefst dankbar für die Möglichkeit, meine Ideen auf diese Weise umsetzen und teilen zu dürfen. Dieses Projekt soll ein demütiger Beweis dafür sein, wie Leidenschaft und moderne KI-Technologie zusammenkommen können, um nützliche und offene Alternativen zu schaffen. Durch den Launcher und den modularen Aufbau wurde die Suite von Anfang an so konzipiert, dass Erweiterungen und Ergänzungen jederzeit möglich sind. Jeder, der möchte, ist herzlich eingeladen, seine eigenen Ideen und Visionen mit einzubringen und umzusetzen.
-
-
 🚀 **Features**
 * **Vollständig Multilingual:** Befehle wie WENN, DANN, SCHLEIFE, AUSGABE usw.
 * **"God" Mode (Python Bridge):** Nutze jedes Python-Modul (tkinter, requests, pandas) direkt in Zuse.
@@ -51,6 +42,14 @@ Zuse v6.5 kommt mit einer MIT Lizenz (Siehe Lizenz Datei).
 Wenn du dieses Projekt nutzt oder weiterentwickelst, freuen wir uns über
 eine namentliche Erwähnung in der README
 ("Zuse von Innobytix-it.de"), dies ist jedoch keine Pflicht.
+
+## 🙏 Danksagung & Projektphilosophie
+
+Dieses Projekt ist das Ergebnis einer Vision, die durch den Einsatz moderner KI-Werkzeuge Wirklichkeit werden konnte. Es ist ein Beispiel für Selbstverwirklichung und den Wunsch, nützliche und freie Software für alle zugänglich zu machen.
+
+Mein aufrichtiger Dank gilt den Entwicklern und Forschern, deren Arbeit diese Werkzeuge ermöglicht hat. In diesem Projekt fungierten sie als unermüdliche digitale Assistenten, die den Code schrieben, während die Vision, die Architektur und die Leitung des Projekts in meiner Verantwortung lagen. Gott sei Dank konnte ich dadurch meine persönlichen Ressourcen hauptsächlich auf Design- und Architekturfragen, die Funktionsweisen und den Inhalt der Software konzentrieren, anstatt mühevoll Codezeile für Codezeile selbst zu schreiben.
+
+Ich bin zutiefst dankbar für die Möglichkeit, meine Ideen auf diese Weise umsetzen und teilen zu dürfen. Dieses Projekt soll ein demütiger Beweis dafür sein, wie Leidenschaft und moderne KI-Technologie zusammenkommen können, um nützliche und offene Alternativen zu schaffen. Durch den Launcher und den modularen Aufbau wurde die Suite von Anfang an so konzipiert, dass Erweiterungen und Ergänzungen jederzeit möglich sind. Jeder, der möchte, ist herzlich eingeladen, seine eigenen Ideen und Visionen mit einzubringen und umzusetzen.
 
 Manuel Person
 
@@ -97,6 +96,7 @@ If you use or extend this project, attribution in your README
 **Lizenz:** Open Source MIT
 
 ```
+
 
 
 
