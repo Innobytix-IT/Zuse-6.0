@@ -1,10 +1,4 @@
-Hier ist die Übersetzung der Dokumentation ins Englische. Ich habe dabei auch die Code-Beispiele in den Syntax-Abschnitten auf die **englische Zuse-Syntax** angepasst (z.B. `IF` statt `WENN`), damit internationale Nutzer die Sprache sofort verstehen.
 
-Du kannst das als `README.md` (oder `README_EN.md`, falls du beide behalten willst) speichern.
-
-***
-
-```markdown
 # ZUSE 🖥️
 > **"Simple because 'Simple' is simple."**
 
@@ -138,4 +132,5 @@ led.write(1)
 **Architect:** Manuel Person
 **Co-Coding:** Gemini
 **License:** Open Source MIT
+
 ```
