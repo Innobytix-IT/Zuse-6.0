@@ -15,7 +15,18 @@ https://github.com/user-attachments/assets/4e110498-f6c1-4df8-a8d2-e0db3fb881e9
 
 ---
 
-Willkommen bei Zuse! Zuse ist eine moderne, mehrsprachige Programmiersprache (Deutsch, Englisch, Spanisch, Portugiesisch, Französisch, Italienisch), die speziell für Bildungszwecke und Rapid Prototyping entwickelt wurde. Sie ermöglicht alles – von einfachen Rechnungen bis hin zu komplexen grafischen Benutzeroberflächen.
+Willkommen bei Zuse! Zuse ist eine moderne, mehrsprachige Programmiersprache (Deutsch, Englisch, Spanisch, Portugiesisch, Französisch, Italienisch usw.), die speziell für Bildungszwecke und Rapid Prototyping entwickelt wurde. Sie ermöglicht alles – von einfachen Rechnungen bis hin zu komplexen grafischen Benutzeroberflächen.
+
+Der Name "Zuse" geht auf Konrad Zuse zurück, der 1941 mit dem Z3
+den weltweit ersten funktionsfähigen programmgesteuerten Computer entwickelte
+und mit dem Plankalkül die erste höhere Programmiersprache entwarf.
+Dieses Projekt greift bewusst den Ansatz der Einfachheit von Konrad Zuse auf.
+
+Die daraus resultierende Philosophie
+„weil "Einfach", einfach einfach ist“
+bildet das Fundament dieses Projekts.
+
+
 
 🚀 **Features**
 * **Vollständig Multilingual:** Befehle wie WENN, DANN, SCHLEIFE, AUSGABE usw.
@@ -29,12 +40,26 @@ Willkommen bei Zuse! Zuse ist eine moderne, mehrsprachige Programmiersprache (De
 Dieses Projekt ist Open-Source und freut sich über jede Form der Unterstützung! ;)
 Zuse v6.5 kommt mit einer MIT Lizenz (Siehe Lizenz Datei).
 
+Wenn du dieses Projekt nutzt oder weiterentwickelst, freuen wir uns über
+eine namentliche Erwähnung in der README
+("Zuse von Innobytix-it.de"), dies ist jedoch keine Pflicht.
+
 ---
 
 # 📘 ZUSE v6.x - Multilingual Edition (English)
 The multilingual programming language built on the power of Python.
 
 Welcome to Zuse! Zuse is a modern, multilingual programming language (German, English, Spanish, Portuguese, French, Italian) specifically designed for educational purposes and rapid prototyping.
+
+The name "Zuse" refers to Konrad Zuse, who in 1941 developed the Z3,
+the world’s first functional program-controlled computer,
+and designed Plankalkül, the first high-level programming language.
+This project consciously adopts Konrad Zuse’s principle of simplicity.
+
+The resulting philosophy —
+“because ‘simple’ is simply simple” —
+forms the foundation of this project.
+
 
 🚀 **Features**
 * **Fully Multilingual:** Use native commands like IF, THEN, LOOP, PRINT (English) or WENN, DANN, SCHLEIFE, AUSGABE (German).
@@ -46,14 +71,22 @@ Welcome to Zuse! Zuse is a modern, multilingual programming language (German, En
 **Contribute**
 This project is open-source, and we welcome any form of support! ;)
 Zuse v6.5 is released under the MIT License (see License file).
+---
 
+## Attribution
+
+If you use or extend this project, attribution in your README
+("Zuse by Innobytix-it.de") is appreciated, but not required.
 
 ---
 
-**Architekt:** Manuel Person 
+**Architekt:** Manuel Person
+-
 **Co-Coding:** Gemini
+-
 **Lizenz:** Open Source MIT
 
 ```
+
 
 
