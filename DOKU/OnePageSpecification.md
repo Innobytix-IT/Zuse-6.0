@@ -91,4 +91,14 @@ Zuse 6.0 ist eine **mehrsprachige, textbasierte Programmiersprache**, deren **n
 * Funktionsfähiger Interpreter & IDE
 * Mehrsprachige Syntax produktiv
 * Weiterentwicklung: Spezifikation, Tests, Tooling
+---
+## Ausblick für die Zukunft 
+
+Zuse soll in Zukunft weiter ausgebaut werden so das es auf auch auf weiteren Programmiersprachen aufsetzen kann. 
+
+Dieses Konzept nennen wir:  
+"double multilingual"
+
+<img width="800" height="810" alt="image" src="https://github.com/user-attachments/assets/4f2eaad8-9a04-4fc3-8a67-aadbfec8988e" />
+
 
