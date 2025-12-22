@@ -51,38 +51,26 @@ Hier lernst du die Grundlagen der deutschen Syntax.
 ---
 
 ### 4.1 Die erste Ausgabe
-```text
+
 AUSGABE "Hallo Welt!"
 4.2 Variablen (Daten speichern)
 
 Du musst keine Typen angeben. Zuse versteht das automatisch.
 
-code
-Text
-download
-content_copy
-expand_less
+
 name = "Manuel"
 alter = 35
 groesse = 1.80
 liste = [1, 2, 3]
+
 4.3 Entscheidungen (WENN / DANN)
-code
-Text
-download
-content_copy
-expand_less
 WENN alter > 18 DANN
     AUSGABE "Erwachsen"
 SONST
     AUSGABE "Kind"
 ENDE WENN
 4.4 Schleifen (Wiederholungen)
-code
-Text
-download
-content_copy
-expand_less
+
 # Zählschleife
 SCHLEIFE FÜR i IN [1, 2, 3] MACHE
     AUSGABE "Nummer: " + str(i)
@@ -93,11 +81,7 @@ SCHLEIFE SOLANGE alter < 100 MACHE
     alter = alter + 1
 ENDE SCHLEIFE
 4.5 Funktionen (Befehle selber bauen)
-code
-Text
-download
-content_copy
-expand_less
+
 DEFINIERE begruesse(name):
     AUSGABE "Hallo " + name
 ENDE FUNKTION
@@ -111,11 +95,7 @@ Zuse bringt mächtige Werkzeuge mit, die dir viel Arbeit abnehmen. Wenn du oben 
 
 Perfekt, um Programmieren zu lernen.
 
-code
-Text
-download
-content_copy
-expand_less
+
 # Erstellt einen Maler namens "pablo"
 pablo = Maler()
 
@@ -134,11 +114,7 @@ Befehle: gehe(), zurueck(), drehe_links(), drehe_rechts(), stift_hoch(), stift_r
 
 Erstellt professionelle Programm-Fenster. Die Bibliothek kümmert sich automatisch um die technische Verwaltung.
 
-code
-Text
-download
-content_copy
-expand_less
+
 # Erstellt ein Fenster (Titel, Breite, Höhe)
 spiel = Fenster("Mein Spiel", 400, 300)
 
@@ -162,11 +138,6 @@ Beispiel: Arduino steuern
 
 Voraussetzung: pyfirmata muss auf dem PC installiert sein.
 
-code
-Text
-download
-content_copy
-expand_less
 # Zugriff auf Hardware-Bibliothek
 BENUTZE pyfirmata
 
@@ -202,16 +173,10 @@ A: Drücke einmal auf STOP und dann wieder auf START. Zuse bereinigt den Speiche
 Viel Spaß beim Erschaffen!
 Dein Zuse-Team
 
-code
-Code
-download
-content_copy
-expand_less
 ---
 
 ### 2. Die Befehlsreferenz (`BEFEHLE.md`)
 
-```markdown
 # 📖 Zuse Befehls-Referenz (Version 6.9)
 
 Diese Referenz gilt für die **deutsche Spracheinstellung**. In anderen Sprachen (Englisch, Spanisch etc.) ändert sich nur das Schlüsselwort (z.B. `WENN` -> `IF`), die Logik bleibt identisch.
@@ -346,4 +311,7 @@ Wenn der Modus im Studio auf "Profi" steht, sind **alle** Python-Module importie
 *   `BENUTZE serial` (Serielle Schnittstelle)
 *   `BENUTZE os` (Dateisystem)
 *   `BENUTZE time` (Zeitfunktionen)
+
 *   `BENUTZE math` (Erweiterte Mathematik wie Sinus/Cosinus)
+
+```text
