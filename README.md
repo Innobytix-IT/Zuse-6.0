@@ -96,7 +96,11 @@ If you use or extend this project, attribution in your README
 -
 **Lizenz:** Open Source MIT
 
+<img width="897" height="901" alt="image" src="https://github.com/user-attachments/assets/d141730f-6191-416e-9c67-773c529a71cf" />
+
+
 ```
+
 
 
 
