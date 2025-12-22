@@ -125,6 +125,7 @@ led.write(1)
 
 *   [x] **v1.0 (v6.9):** Stabiler Interpreter, IDE, Bibliotheken (DE/EN/ES/PT/FR/IT).
 *   [ ] **v2.0 (Zuse Universal):** Entkopplung vom Python-Core durch eine **Intermediate Representation (IR)**. Entwicklung eines Transpilers unter anderem nach **JavaScript** (aber auch **C#** und **Java**), um Zuse-Programme zb. nativ im Browser (als PWA) auszuführen.
+<img width="585" height="584" alt="image" src="https://github.com/user-attachments/assets/1e5649a9-1c79-4b5c-8149-b0f0329211a7" />
 
 ---
 
@@ -133,6 +134,7 @@ led.write(1)
 **Lizenz:** Open Source MIT
 
 ```
+
 
 
 
