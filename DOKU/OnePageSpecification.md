@@ -1,4 +1,4 @@
-# Zuse 6.0 – One‑Page Specification
+# Zuse 6.x – One‑Page Specification
 
 ## Ziel
 
@@ -91,3 +91,4 @@ Zuse 6.0 ist eine **mehrsprachige, textbasierte Programmiersprache**, deren **n
 * Funktionsfähiger Interpreter & IDE
 * Mehrsprachige Syntax produktiv
 * Weiterentwicklung: Spezifikation, Tests, Tooling
+
