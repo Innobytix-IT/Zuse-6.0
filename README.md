@@ -24,7 +24,7 @@ Dieses Projekt greift bewusst den Ansatz der Einfachheit von Konrad Zuse auf.
 
 Die daraus resultierende Philosophie
 „weil "Einfach", einfach einfach ist“
-bildet das Fundament dieses Projekts.
+bildet wie bei allen anderen Innobytix-IT Projekten das Fundament.
 
 
 🚀 **Features**
@@ -97,6 +97,7 @@ If you use or extend this project, attribution in your README
 **Lizenz:** Open Source MIT
 
 ```
+
 
 
 
